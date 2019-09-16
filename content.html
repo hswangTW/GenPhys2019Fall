@@ -1,124 +1,222 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>2019 普通物理學甲上 VPython</title>
-    <link rel="stylesheet" type="text/css" href="mystyle.css">
-</head>
+    <link rel="stylesheet" type="text/css" href="mystyle.css" />
+  </head>
 
-<body>
+  <body>
     <div class="wrapper">
-        <div class="top-bar">
-            <div class="title-container">
-                <h1 class="page-title">普通物理學甲上 VPython Page</h1>
-                <h2>2019 Fall</h2>
-            </div>
+      <div class="top-bar">
+        <div class="title-container">
+          <h1 class="page-title">普通物理學甲上 VPython Page</h1>
+          <h2>2019 Fall</h2>
         </div>
-        <div class="nav-bar">
-            <nav>
-                <a href="content.html">首頁</a>
-                <a href="VP1.html">VP1</a>
-            </nav>
+      </div>
+      <div class="nav-bar">
+        <nav>
+          <a href="content.html">首頁</a>
+          <a href="VP1.html">VP1</a>
+        </nav>
+      </div>
+      <div class="main-content">
+        <div
+          id="doc"
+          class="markdown-body container-fluid comment-enabled"
+          data-hard-breaks="true"
+        >
+          <style>
+            .hili {
+              color: red;
+              font-weight: bold;
+            }
+          </style>
+          <h1 id="普通物理學程式模擬專題">普通物理學程式模擬專題</h1>
+          <p>
+            這裡是電機系普物，胡崇德老師班級所適用的頁面，關於程式模擬作業的資訊會盡量全部整理到這邊來。
+          </p>
+          <p>
+            如各位所見，作業的連結（可能還會有其他東西）都在上面，至於這學期的作業相關規定請參見下面的說明。
+          </p>
+          <h2 id="作業要求與評分方式">作業要求與評分方式</h2>
+          <p>
+            石明豐老師為這學期準備了九次作業，但考慮到本班還會有紙筆作業等等，我們只會有六次程式作業。作業會在
+            CEIBA 和這裡公布，助教也會寄信通知大家。作業分成兩個部份：
+          </p>
+          <h4 id="（一）程式碼">（一）程式碼</h4>
+          <p>
+            請各位在看完石明豐老師每次作業的講課影片後，照作業說明文件中的要求，準時在
+            CEIBA
+            作業區繳交能夠正常運行的程式碼（py檔）。每次作業都會有必作（must）部份，其中還有三次作業會有選作（optional）的題目。選作題基本上是純粹加分用（夠厲害的話沒寫也能滿分的意思），詳見下方的配分說明。
+          </p>
+          <h4 id="（二）說明影片">（二）說明影片</h4>
+          <p>
+            除了程式碼之外，這學期還要從六次作業中選出兩次作業來拍攝說明影片，請同學們當作是自己在教課一般，在影片中向其他同學說明：
+          </p>
+          <ol>
+            <li>作業的物理意涵</li>
+            <li>
+              自己的程式如何運作（至少要講解必作的部份，有餘力的話也可以講解選作部份幫助其他同學理解）
+            </li>
+          </ol>
+          <p>
+            接著將影片上傳到
+            YouTube（可以設成<strong>不公開</strong>但不能設成<strong>私人</strong>），並把影片連結附在該次作業的壓縮檔中，一起交到
+            CEIBA（每次作業的說明都會提醒各位繳交格式）。
+          </p>
+          <p>
+            拍攝影片是老師非常看重的部份，他希望同學們不只能夠撰寫出程式，還要同時能了解其中的物理，以及如何讓他人理解自己的程式運作。所以影片佔的配分比例不小（詳見下方配分說明）。去年的班級常常會有影片不夠完整的情況，<strong>這學期因為時間比較充裕的關係，視情況有可能會要求各位重拍影片</strong>，請大家盡可能做到最好喔。
+          </p>
+          <h3 id="配分方式">配分方式</h3>
+          <ul>
+            <li>
+              <p><strong>程式碼部份（15%+3%）</strong></p>
+              <p>
+                本學期共有六次作業，其中有六個必作題和三個選作題。必作題和選作題的滿分都是
+                100 分，必作部份一題佔學期成績
+                2.5%，選作題則是額外加分用，一題最多加學期成績 1%。
+              </p>
+              <p>
+                也就是說，程式碼部份雖然只佔學期成績 15%
+                ，但如果選作題全部完成的話，最多可以拿到 18 分的學期成績。
+              </p>
+              <p>
+                每次作業，助教會訂定幾個需要完成的目標，有達成目標就會拿到相對應的分數。遲交者若在截止期限後三天內繳交，分數打八折，<strong>超過三天則不接受繳交</strong>，請務必注意。
+              </p>
+            </li>
+            <li>
+              <p><strong>說明影片（3%）</strong></p>
+              <p>
+                本學期總共需要拍攝兩次說明影片。各作業的影片連結需包含在壓縮檔內（詳見各次作業規定的格式），和程式碼一起繳交。每部影片佔學期成績
+                1.5%，遲交規定則比照程式碼部分。
+              </p>
+            </li>
+          </ul>
+          <h3 id="抄襲處置">抄襲處置</h3>
+          <p>
+            作業被發現抄襲者，<strong>無論是被抄或是抄人者，該次作業直接以0分計</strong>。同學們當然可以討論作業該怎麼寫，但討論完之後請還是務必自己動手寫完程式，在寫的過程中自己把邏輯再跑過一次，這樣才能真的從作業學到東西。而且抓抄襲並不需要助教用肉眼檢查，可以全部交給<strong>程式自動比對</strong>，處理起來省時省力，去年前前後後有一共十幾份作業因為抄襲零分，請同學們不要輕易挑戰。
+          </p>
+          <h2 id="環境設置">環境設置</h2>
+          <p><strong>環境要求：Python 3 + VPython 7</strong></p>
+          <p>
+            沒在自己電腦安裝過 Python 3 的人，很推薦直接安裝 Anaconda
+            ，它包含了很多日後各位可能用到的套件（<code>numpy</code>,
+            <code>matplotlib</code>, <code>scikit-learn</code>, etc.)、Python
+            的虛擬環境、還有 Jupyter notebook 這個好用的工具等等。
+          </p>
+          <ul>
+            <li>
+              <p>
+                <strong>Anaconda + VPython 安裝教學</strong><br />
+                Windows:
+                <a
+                  href="https://tinyurl.com/ydxwkm5f"
+                  target="_blank"
+                  rel="noopener"
+                  >https://tinyurl.com/ydxwkm5f</a
+                ><br />
+                Mac:
+                <a
+                  href="https://tinyurl.com/y7y9aj5o"
+                  target="_blank"
+                  rel="noopener"
+                  >https://tinyurl.com/y7y9aj5o</a
+                >
+                ( 不含 VPython)<br />
+                （在Mac使用Anaconda安裝Vpython，請在terminal輸入<code
+                  >conda install -c vpython vpython</code
+                >。）
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>普通的 Python 3 + VPython 安裝教學</strong><br />
+                Windows:
+                <a
+                  href="https://tinyurl.com/ya7g9wyw"
+                  target="_blank"
+                  rel="noopener"
+                  >https://tinyurl.com/ya7g9wyw</a
+                >
+                (記得是安裝Python 3）<br />
+                Mac:
+                <a
+                  href="https://tinyurl.com/y7jkpbyo"
+                  target="_blank"
+                  rel="noopener"
+                  >https://tinyurl.com/y7jkpbyo</a
+                >
+              </p>
+            </li>
+          </ul>
+          <h2 id="網站資源">網站資源</h2>
+          <ul>
+            <li>
+              <p>
+                <strong>VPhysics:</strong>
+                <a
+                  href="https://tinyurl.com/yb9pu62o"
+                  target="_blank"
+                  rel="noopener"
+                  >https://tinyurl.com/yb9pu62o</a
+                ><br />
+                石明豐老師直接管理的網站，上面有安裝說明和一些簡單介紹，由於是老師直接管理，所以這裡的作業內容更新是最快的。
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>VPython Documentation:</strong>
+                <a
+                  href="https://tinyurl.com/ybheq4md"
+                  target="_blank"
+                  rel="noopener"
+                  >https://tinyurl.com/ybheq4md</a
+                ><br />
+                寫得不怎麼好的 Documentation
+                ，但基本上這個套件各項用法的官方說明都在這裡了，只是真的不太好找。（說不定你們很能理解他的邏輯也不一定）
+              </p>
+            </li>
+            <li>
+              <p>
+                <strong>VPython User Forum:</strong>
+                <a
+                  href="https://tinyurl.com/hw8eu68"
+                  target="_blank"
+                  rel="noopener"
+                  >https://tinyurl.com/hw8eu68</a
+                ><br />
+                只要用 Google 帳號點選加入 group
+                就可以在上面發問，會有專家回應。
+              </p>
+            </li>
+          </ul>
+          <h2 id="關於螢幕錄影">關於螢幕錄影</h2>
+          <p>
+            螢幕錄影方法的補充請看<a href="" target="_blank" rel="noopener"
+              >這邊</a
+            >。
+          </p>
+          <h2 id="聯絡助教">聯絡助教</h2>
+          <ul>
+            <li>負責助教: 物理碩二 王涵聖</li>
+            <li>
+              聯絡信箱:
+              <a
+                href="mailto:r07222060@ntu.edu.tw"
+                target="_blank"
+                rel="noopener"
+                >r07222060@ntu.edu.tw</a
+              >
+            </li>
+          </ul>
+          <p>
+            基本上這個頁面和各位的作業都是由我負責的，有關這門課程式作業、或是有些
+            Python 的問題都歡迎寄信來問我。安裝的時候如果遇到什麼問題，除了 Mac
+            比較沒辦法直接回答之外（我可以幫你問其他助教），Windows 跟
+            Linux（Ubuntu, CentOS, Arch等等）我也都可以盡量幫忙解決。
+          </p>
         </div>
-        <div class="main-content">
-            <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true">
-                <h1 style="color:red; text-align:center; font-size:96px">測試中</h1>
-                <h2 style="color:red; text-align:center">以下都是上個學期的內容</h2>
-                <h1 id="普通物理學程式模擬專題">普通物理學程式模擬專題</h1>
-                <p>這裡是電機系普物，胡崇德老師班級所適用的 GitHub 頁面，關於程式模擬作業和專題的資訊會盡量全部整理到這邊來。</p>
-                <h2 id="如何使用這個頁面">如何使用這個頁面</h2>
-                <p>由於一時沒想到更好的方式來呈現這些說明，所以助教就選用了 GitHub
-                    了。這個位在根目錄的主頁面會放關於整個課程的說明，至於各次作業的詳細說明，會放到對應的資料夾裡面，請從上方點進對應的資料夾就行了。進入資料夾後，便會出現作業說明。</p>
-                <p><img src="" alt="image"><br>
-                    ↑↑↑順手截了個圖↑↑↑</p>
-                <h2 id="作業要求與評分方式">作業要求與評分方式</h2>
-                <p>本學期將會有四次程式作業、沒有「程式」專題。作業會在 CEIBA 和這裡公布，助教也會寄信通知大家。作業分成兩個部份：</p>
-                <h4 id="（一）程式碼">（一）程式碼</h4>
-                <p>請各位在看完石明豐老師的講課影片後，照作業說明文件中的要求，準時在CEIBA作業區繳交能夠正常運行的程式碼（py檔）。每次作業都會有必作（must）和選作（optional）部份，這學期的選作部份基本上是純粹加分用（夠厲害的話沒寫也能滿分的意思），詳見下方的配分說明。
-                </p>
-                <h4 id="（二）說明影片">（二）說明影片</h4>
-                <p>除了程式碼之外，這學期一樣要拍攝四次說明影片（也就是每次都要拍），請同學們當作是自己在教課一般，在影片中說明：</p>
-                <ol>
-                    <li>作業的物理意涵</li>
-                    <li>自己的程式如何運作</li>
-                </ol>
-                <blockquote>
-                    <p>在這學期，如果有寫選作題，就必須要在影片一併說明必作和選作部份，如果有缺的話助教會通知各位補上。</p>
-                </blockquote>
-                <p>接著將影片上傳到 YouTube（可以設成不公開但不能設成私人），並把影片連結附在該次作業的壓縮檔中，一起交到 CEIBA（每次作業的說明都會提醒各位繳交格式）。</p>
-                <p>拍攝影片是老師非常看重的部份，他希望同學們不只能夠撰寫出程式，還要同時能了解其中的物理，以及如何讓他人理解自己的程式運作。所以如果繳交的影片不足4部，處罰也會比較重一些（詳見下方配分說明）。上個學期其實有些影片是不夠完整的，<strong>這學期因為時間比較充裕的關係，視情況有可能會要求各位重拍影片</strong>，請大家盡可能做到最好喔。
-                </p>
-                <h3 id="配分規則說明">配分規則說明</h3>
-                <ul>
-                    <li>
-                        <p><strong>程式碼部份（12%）</strong></p>
-                        <p>本學期共四次作業，一次作業佔學期成績 3% 。每次作業的滿分皆是 100 分，只要準時並正確完成必作部份，就能拿到滿分 100 分，而如果同樣準時並正確完成選作部份者，該次作業加 25
-                            分（如果該次作業沒有選作題，必作部份的滿分會調整成 125 分）。也就是說，雖然程式作業只佔學期成績 12% ，但如果你們每次必作選作都滿分，就會拿到 15 分的學期成績。</p>
-                        <p>每次作業的評分方式會和上學期差不多，助教會訂定幾個需要完成的目標，有達成目標就會拿到分數。遲交者若在期限後三天內繳交者，分數打八折，<strong>超過三天則不接受繳交</strong>。
-                        </p>
-                    </li>
-                    <li>
-                        <p><strong>說明影片（-4% ~ 0%）</strong></p>
-                        <p>本學期每次作業都必須拍攝說明影片，且需包含必作和選作部份（如果沒寫就不用）。各作業的影片連結需包含在壓縮檔內，和程式碼一起繳交，至期末不足四部影片者，<strong>每少一次作業的影片扣作業總分
-                                1 分</strong>。逾期繳交的影片<strong>僅能充當 0.5 次</strong>，也就是遲交的影片兩次才能抵一次作業。</p>
-                    </li>
-                </ul>
-                <h3 id="抄襲處置">抄襲處置</h3>
-                <p>作業被發現抄襲者，<strong>無論是被抄或是抄人者，該次作業直接以0分計</strong>。同學們當然可以討論作業該怎麼寫，但討論完之後請還是務必自己動手寫完程式，在寫的過程中自己把邏輯再跑過一次，這樣才能真的從作業學到東西。而且抓抄襲的程式、方法真的<strong>非常地多</strong>，批次處理起來省時省力，上學期前前後後有一共十幾份作業因為抄襲零分，請同學們不要輕易挑戰。
-                </p>
-                <h2 id="環境設置">環境設置</h2>
-                <p><strong>環境要求：Python 3 + VPython 7</strong></p>
-                <p>沒在自己電腦安裝過 Python 3 的人，很推薦直接安裝 Anaconda ，它包含了很多日後各位可能用到的套件（numpy, matplotlib, scikit-learn,
-                    etc.)、Python 的虛擬環境、還有 Jupyter notebook 這個有趣好用的工具等等。若是電腦裡已經有 Python 3 的話就沒那麼推薦了，一不小心就會把 Python
-                    環境搞得一團亂。</p>
-                <ul>
-                    <li>
-                        <p><strong>Anaconda + VPython 安裝教學</strong><br>
-                            Windows: <a href="https://tinyurl.com/ydxwkm5f" target="_blank"
-                                rel="noopener">https://tinyurl.com/ydxwkm5f</a><br>
-                            Mac: <a href="https://tinyurl.com/y7y9aj5o" target="_blank"
-                                rel="noopener">https://tinyurl.com/y7y9aj5o</a> ( 不含 VPython)<br>
-                            （在Mac使用Anaconda安裝Vpython，請在terminal輸入<code>conda install -c vpython vpython</code>。）</p>
-                    </li>
-                    <li>
-                        <p><strong>普通的 Python 3 + VPython 安裝教學</strong><br>
-                            Windows: <a href="https://tinyurl.com/ya7g9wyw" target="_blank"
-                                rel="noopener">https://tinyurl.com/ya7g9wyw</a> (記得是安裝Python 3）<br>
-                            Mac: <a href="https://tinyurl.com/y7jkpbyo" target="_blank"
-                                rel="noopener">https://tinyurl.com/y7jkpbyo</a></p>
-                    </li>
-                </ul>
-                <h2 id="網站資源">網站資源</h2>
-                <ul>
-                    <li>
-                        <p><strong>VPhysics:</strong> <a href="https://tinyurl.com/yb9pu62o" target="_blank"
-                                rel="noopener">https://tinyurl.com/yb9pu62o</a><br>
-                            石明豐老師直接管理的網站，上面有安裝說明和一些簡單介紹，由於是老師直接管理，所以這裡的作業內容更新是最快的。</p>
-                    </li>
-                    <li>
-                        <p><strong>VPython Documentation:</strong> <a href="https://tinyurl.com/ybheq4md"
-                                target="_blank" rel="noopener">https://tinyurl.com/ybheq4md</a><br>
-                            寫得不怎麼好的 Documentation ，但基本上這個套件各項用法的官方說明都在這裡了，只是真的不太好找。（說不定你們很能理解他的邏輯也不一定）</p>
-                    </li>
-                    <li>
-                        <p><strong>VPython User Forum:</strong> <a href="https://tinyurl.com/hw8eu68" target="_blank"
-                                rel="noopener">https://tinyurl.com/hw8eu68</a><br>
-                            只要用 Google 帳號點選加入 group 就可以在上面發問，會有專家回應。</p>
-                    </li>
-                </ul>
-                <h2 id="關於螢幕錄影">關於螢幕錄影</h2>
-                <p>螢幕錄影方法的補充請看<a href="" target="_blank" rel="noopener">這邊</a>。</p>
-                <h2 id="聯絡助教">聯絡助教</h2>
-                <ul>
-                    <li>負責助教: 物理碩一 王涵聖</li>
-                    <li>聯絡信箱: <a href="mailto:r07222060@ntu.edu.tw" target="_blank"
-                            rel="noopener">r07222060@ntu.edu.tw</a></li>
-                </ul>
-                <p>基本上這個頁面和各位的作業都是由我負責的，有關這門課程式作業、或是有些 Python 的問題都歡迎寄信來問我。安裝的時候如果遇到什麼問題，除了 Mac
-                    比較沒辦法回答之外（我可以幫你問其他助教），Windows 跟 Linux（尤其 Ubuntu 系列跟 Arch）我也都可以盡量幫忙解決。</p>
-            </div>
-        </div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>
