@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        VP3: SHM [tuple, list, for]
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+        integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css"
+        integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css"
+        integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css"
+        integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @charset "UTF-8";
+        @import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);
+
+        .hljs {
+            display: block;
+            background: #fff;
+            padding: .5em;
+            color: #333;
+            overflow-x: auto
+        }
+
+        .hljs-comment,
+        .hljs-meta {
+            color: #969896
+        }
+
+        .hljs-emphasis,
+        .hljs-quote,
+        .hljs-string,
+        .hljs-strong,
+        .hljs-template-variable,
+        .hljs-variable {
+            color: #df5000
+        }
+
+        .hljs-keyword,
+        .hljs-selector-tag,
+        .hljs-type {
+            color: #a71d5d
+        }
+
+        .hljs-attribute,
+        .hljs-bullet,
+        .hljs-literal,
+        .hljs-number,
+        .hljs-symbol {
+            color: #0086b3
+        }
+
+        .hljs-built_in,
+        .hljs-builtin-name {
+            color: #005cc5
+        }
+
+        .hljs-name,
+        .hljs-section {
+            color: #63a35c
+        }
+
+        .hljs-tag {
+            color: #333
+        }
+
+        .hljs-attr,
+        .hljs-selector-attr,
+        .hljs-selector-class,
+        .hljs-selector-id,
+        .hljs-selector-pseudo,
+        .hljs-title {
+            color: #795da3
+        }
+
+        .hljs-addition {
+            color: #55a532;
+            background-color: #eaffea
+        }
+
+        .hljs-deletion {
+            color: #bd2c00;
+            background-color: #ffecec
+        }
+
+        .hljs-link {
+            text-decoration: underline
+        }
+
+        .markdown-body {
+            font-size: 16px;
+            line-height: 1.5;
+            word-wrap: break-word
+        }
+
+        .markdown-body:after,
+        .markdown-body:before {
+            display: table;
+            content: ""
+        }
+
+        .markdown-body:after {
+            clear: both
+        }
+
+        .markdown-body>:first-child {
+            margin-top: 0 !important
+        }
+
+        .markdown-body>:last-child {
+            margin-bottom: 0 !important
+        }
+
+        .markdown-body a:not([href]) {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .markdown-body .absent {
+            color: #c00
+        }
+
+        .markdown-body .anchor {
+            float: left;
+            padding-right: 4px;
+            margin-left: -20px;
+            line-height: 1
+        }
+
+        .markdown-body .anchor:focus {
+            outline: none
+        }
+
+        .markdown-body blockquote,
+        .markdown-body dl,
+        .markdown-body ol,
+        .markdown-body p,
+        .markdown-body pre,
+        .markdown-body table,
+        .markdown-body ul {
+            margin-top: 0;
+            margin-bottom: 16px
+        }
+
+        .markdown-body hr {
+            height: .25em;
+            padding: 0;
+            margin: 24px 0;
+            background-color: #e7e7e7;
+            border: 0
+        }
+
+        .markdown-body blockquote {
+            font-size: 16px;
+            padding: 0 1em;
+            color: #777;
+            border-left: .25em solid #ddd
+        }
+
+        .markdown-body blockquote>:first-child {
+            margin-top: 0
+        }
+
+        .markdown-body blockquote>:last-child {
+            margin-bottom: 0
+        }
+
+        .markdown-body kbd,
+        .popover kbd {
+            display: inline-block;
+            padding: 3px 5px;
+            font-size: 11px;
+            line-height: 10px;
+            color: #555;
+            vertical-align: middle;
+            background-color: #fcfcfc;
+            border: 1px solid #ccc;
+            border-bottom-color: #bbb;
+            border-radius: 3px;
+            box-shadow: inset 0 -1px 0 #bbb
+        }
+
+        .markdown-body .loweralpha {
+            list-style-type: lower-alpha
+        }
+
+        .markdown-body h1,
+        .markdown-body h2,
+        .markdown-body h3,
+        .markdown-body h4,
+        .markdown-body h5,
+        .markdown-body h6 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            font-weight: 600;
+            line-height: 1.25
+        }
+
+        .markdown-body h1 .octicon-link,
+        .markdown-body h2 .octicon-link,
+        .markdown-body h3 .octicon-link,
+        .markdown-body h4 .octicon-link,
+        .markdown-body h5 .octicon-link,
+        .markdown-body h6 .octicon-link {
+            color: #000;
+            vertical-align: middle;
+            visibility: hidden
+        }
+
+        .markdown-body h1:hover .anchor,
+        .markdown-body h2:hover .anchor,
+        .markdown-body h3:hover .anchor,
+        .markdown-body h4:hover .anchor,
+        .markdown-body h5:hover .anchor,
+        .markdown-body h6:hover .anchor {
+            text-decoration: none
+        }
+
+        .markdown-body h1:hover .anchor .octicon-link,
+        .markdown-body h2:hover .anchor .octicon-link,
+        .markdown-body h3:hover .anchor .octicon-link,
+        .markdown-body h4:hover .anchor .octicon-link,
+        .markdown-body h5:hover .anchor .octicon-link,
+        .markdown-body h6:hover .anchor .octicon-link {
+            visibility: visible
+        }
+
+        .markdown-body h1 code,
+        .markdown-body h1 tt,
+        .markdown-body h2 code,
+        .markdown-body h2 tt,
+        .markdown-body h3 code,
+        .markdown-body h3 tt,
+        .markdown-body h4 code,
+        .markdown-body h4 tt,
+        .markdown-body h5 code,
+        .markdown-body h5 tt,
+        .markdown-body h6 code,
+        .markdown-body h6 tt {
+            font-size: inherit
+        }
+
+        .markdown-body h1 {
+            font-size: 2em
+        }
+
+        .markdown-body h1,
+        .markdown-body h2 {
+            padding-bottom: .3em;
+            border-bottom: 1px solid #eee
+        }
+
+        .markdown-body h2 {
+            font-size: 1.5em
+        }
+
+        .markdown-body h3 {
+            font-size: 1.25em
+        }
+
+        .markdown-body h4 {
+            font-size: 1em
+        }
+
+        .markdown-body h5 {
+            font-size: .875em
+        }
+
+        .markdown-body h6 {
+            font-size: .85em;
+            color: #777
+        }
+
+        .markdown-body ol,
+        .markdown-body ul {
+            padding-left: 2em
+        }
+
+        .markdown-body ol.no-list,
+        .markdown-body ul.no-list {
+            padding: 0;
+            list-style-type: none
+        }
+
+        .markdown-body ol ol,
+        .markdown-body ol ul,
+        .markdown-body ul ol,
+        .markdown-body ul ul {
+            margin-top: 0;
+            margin-bottom: 0
+        }
+
+        .markdown-body li>p {
+            margin-top: 16px
+        }
+
+        .markdown-body li+li {
+            margin-top: .25em
+        }
+
+        .markdown-body dl {
+            padding: 0
+        }
+
+        .markdown-body dl dt {
+            padding: 0;
+            margin-top: 16px;
+            font-size: 1em;
+            font-style: italic;
+            font-weight: 700
+        }
+
+        .markdown-body dl dd {
+            padding: 0 16px;
+            margin-bottom: 16px
+        }
+
+        .markdown-body table {
+            display: block;
+            width: 100%;
+            overflow: auto;
+            word-break: normal;
+            word-break: keep-all
+        }
+
+        .markdown-body table th {
+            font-weight: 700
+        }
+
+        .markdown-body table td,
+        .markdown-body table th {
+            padding: 6px 13px;
+            border: 1px solid #ddd
+        }
+
+        .markdown-body table tr {
+            background-color: #fff;
+            border-top: 1px solid #ccc
+        }
+
+        .markdown-body table tr:nth-child(2n) {
+            background-color: #f8f8f8
+        }
+
+        .markdown-body img {
+            max-width: 100%;
+            box-sizing: content-box;
+            background-color: #fff
+        }
+
+        .markdown-body img[align=right] {
+            padding-left: 20px
+        }
+
+        .markdown-body img[align=left] {
+            padding-right: 20px
+        }
+
+        .markdown-body .emoji {
+            max-width: none;
+            vertical-align: text-top;
+            background-color: transparent
+        }
+
+        .markdown-body span.frame {
+            display: block;
+            overflow: hidden
+        }
+
+        .markdown-body span.frame>span {
+            display: block;
+            float: left;
+            width: auto;
+            padding: 7px;
+            margin: 13px 0 0;
+            overflow: hidden;
+            border: 1px solid #ddd
+        }
+
+        .markdown-body span.frame span img {
+            display: block;
+            float: left
+        }
+
+        .markdown-body span.frame span span {
+            display: block;
+            padding: 5px 0 0;
+            clear: both;
+            color: #333
+        }
+
+        .markdown-body span.align-center {
+            display: block;
+            overflow: hidden;
+            clear: both
+        }
+
+        .markdown-body span.align-center>span {
+            display: block;
+            margin: 13px auto 0;
+            overflow: hidden;
+            text-align: center
+        }
+
+        .markdown-body span.align-center span img {
+            margin: 0 auto;
+            text-align: center
+        }
+
+        .markdown-body span.align-right {
+            display: block;
+            overflow: hidden;
+            clear: both
+        }
+
+        .markdown-body span.align-right>span {
+            display: block;
+            margin: 13px 0 0;
+            overflow: hidden;
+            text-align: right
+        }
+
+        .markdown-body span.align-right span img {
+            margin: 0;
+            text-align: right
+        }
+
+        .markdown-body span.float-left {
+            display: block;
+            float: left;
+            margin-right: 13px;
+            overflow: hidden
+        }
+
+        .markdown-body span.float-left span {
+            margin: 13px 0 0
+        }
+
+        .markdown-body span.float-right {
+            display: block;
+            float: right;
+            margin-left: 13px;
+            overflow: hidden
+        }
+
+        .markdown-body span.float-right>span {
+            display: block;
+            margin: 13px auto 0;
+            overflow: hidden;
+            text-align: right
+        }
+
+        .markdown-body code,
+        .markdown-body tt {
+            padding: 0;
+            padding-top: .2em;
+            padding-bottom: .2em;
+            margin: 0;
+            font-size: 85%;
+            background-color: rgba(0, 0, 0, .04);
+            border-radius: 3px
+        }
+
+        .markdown-body code:after,
+        .markdown-body code:before,
+        .markdown-body tt:after,
+        .markdown-body tt:before {
+            letter-spacing: -.2em;
+            content: "\00a0"
+        }
+
+        .markdown-body code br,
+        .markdown-body tt br {
+            display: none
+        }
+
+        .markdown-body del code {
+            text-decoration: inherit
+        }
+
+        .markdown-body pre {
+            word-wrap: normal
+        }
+
+        .markdown-body pre>code {
+            padding: 0;
+            margin: 0;
+            font-size: 100%;
+            word-break: normal;
+            white-space: pre;
+            background: transparent;
+            border: 0
+        }
+
+        .markdown-body .highlight {
+            margin-bottom: 16px
+        }
+
+        .markdown-body .highlight pre {
+            margin-bottom: 0;
+            word-break: normal
+        }
+
+        .markdown-body .highlight pre,
+        .markdown-body pre {
+            padding: 16px;
+            overflow: auto;
+            font-size: 85%;
+            line-height: 1.45;
+            background-color: #f7f7f7;
+            border-radius: 3px
+        }
+
+        .markdown-body pre code,
+        .markdown-body pre tt {
+            display: inline;
+            max-width: auto;
+            padding: 0;
+            margin: 0;
+            overflow: visible;
+            line-height: inherit;
+            word-wrap: normal;
+            background-color: transparent;
+            border: 0
+        }
+
+        .markdown-body pre code:after,
+        .markdown-body pre code:before,
+        .markdown-body pre tt:after,
+        .markdown-body pre tt:before {
+            content: normal
+        }
+
+        .markdown-body .csv-data td,
+        .markdown-body .csv-data th {
+            padding: 5px;
+            overflow: hidden;
+            font-size: 12px;
+            line-height: 1;
+            text-align: left;
+            white-space: nowrap
+        }
+
+        .markdown-body .csv-data .blob-line-num {
+            padding: 10px 8px 9px;
+            text-align: right;
+            background: #fff;
+            border: 0
+        }
+
+        .markdown-body .csv-data tr {
+            border-top: 0
+        }
+
+        .markdown-body .csv-data th {
+            font-weight: 700;
+            background: #f8f8f8;
+            border-top: 0
+        }
+
+        .news .alert .markdown-body blockquote {
+            padding: 0 0 0 40px;
+            border: 0 none
+        }
+
+        .activity-tab .news .alert .commits,
+        .activity-tab .news .markdown-body blockquote {
+            padding-left: 0
+        }
+
+        .task-list-item {
+            list-style-type: none
+        }
+
+        .task-list-item label {
+            font-weight: 400
+        }
+
+        .task-list-item.enabled label {
+            cursor: pointer
+        }
+
+        .task-list-item+.task-list-item {
+            margin-top: 3px
+        }
+
+        .task-list-item-checkbox {
+            float: left;
+            margin: .31em 0 .2em -1.3em !important;
+            vertical-align: middle;
+            cursor: default !important
+        }
+
+        .markdown-body {
+            padding-top: 40px;
+            padding-bottom: 40px;
+            max-width: 758px;
+            overflow: visible !important
+        }
+
+        .markdown-body .emoji {
+            vertical-align: top
+        }
+
+        .markdown-body pre {
+            border: inherit !important
+        }
+
+        .markdown-body code {
+            color: inherit !important
+        }
+
+        .markdown-body pre code .wrapper {
+            display: -moz-inline-flex;
+            display: -ms-inline-flex;
+            display: -o-inline-flex;
+            display: inline-flex
+        }
+
+        .markdown-body pre code .gutter {
+            float: left;
+            overflow: hidden;
+            -webkit-user-select: none;
+            user-select: none
+        }
+
+        .markdown-body pre code .gutter.linenumber {
+            text-align: right;
+            position: relative;
+            display: inline-block;
+            cursor: default;
+            z-index: 4;
+            padding: 0 8px 0 0;
+            min-width: 20px;
+            box-sizing: content-box;
+            color: #afafaf !important;
+            border-right: 3px solid #6ce26c !important
+        }
+
+        .markdown-body pre code .gutter.linenumber>span:before {
+            content: attr(data-linenumber)
+        }
+
+        .markdown-body pre code .code {
+            float: left;
+            margin: 0 0 0 16px
+        }
+
+        .markdown-body .gist .line-numbers {
+            border-left: none;
+            border-top: none;
+            border-bottom: none
+        }
+
+        .markdown-body .gist .line-data {
+            border: none
+        }
+
+        .markdown-body .gist table {
+            border-spacing: 0;
+            border-collapse: inherit !important
+        }
+
+        .markdown-body code[data-gist-id] {
+            background: none;
+            padding: 0
+        }
+
+        .markdown-body code[data-gist-id]:after,
+        .markdown-body code[data-gist-id]:before {
+            content: ""
+        }
+
+        .markdown-body code[data-gist-id] .blob-num {
+            border: unset
+        }
+
+        .markdown-body code[data-gist-id] table {
+            overflow: unset;
+            margin-bottom: unset
+        }
+
+        .markdown-body code[data-gist-id] table tr {
+            background: unset
+        }
+
+        .markdown-body[dir=rtl] pre {
+            direction: ltr
+        }
+
+        .markdown-body[dir=rtl] code {
+            direction: ltr;
+            unicode-bidi: embed
+        }
+
+        .markdown-body .alert>p {
+            margin-bottom: 0
+        }
+
+        .markdown-body pre.abc,
+        .markdown-body pre.flow-chart,
+        .markdown-body pre.graphviz,
+        .markdown-body pre.mermaid,
+        .markdown-body pre.sequence-diagram {
+            text-align: center;
+            background-color: inherit;
+            border-radius: 0;
+            white-space: inherit
+        }
+
+        .markdown-body pre.abc>code,
+        .markdown-body pre.flow-chart>code,
+        .markdown-body pre.graphviz>code,
+        .markdown-body pre.mermaid>code,
+        .markdown-body pre.sequence-diagram>code {
+            text-align: left
+        }
+
+        .markdown-body pre.abc>svg,
+        .markdown-body pre.flow-chart>svg,
+        .markdown-body pre.graphviz>svg,
+        .markdown-body pre.mermaid>svg,
+        .markdown-body pre.sequence-diagram>svg {
+            max-width: 100%;
+            height: 100%
+        }
+
+        .markdown-body pre>code.wrap {
+            white-space: pre-wrap;
+            white-space: -moz-pre-wrap;
+            white-space: -pre-wrap;
+            white-space: -o-pre-wrap;
+            word-wrap: break-word
+        }
+
+        .markdown-body .alert>p,
+        .markdown-body .alert>ul {
+            margin-bottom: 0
+        }
+
+        .markdown-body summary {
+            display: list-item
+        }
+
+        .markdown-body summary:focus {
+            outline: none
+        }
+
+        .markdown-body details summary {
+            cursor: pointer
+        }
+
+        .markdown-body details:not([open])>:not(summary) {
+            display: none
+        }
+
+        .markdown-body figure {
+            margin: 1em 40px
+        }
+
+        .markdown-body .mark,
+        .markdown-body mark {
+            background-color: #fff1a7
+        }
+
+        .vimeo,
+        .youtube {
+            cursor: pointer;
+            display: table;
+            text-align: center;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-color: #000;
+            overflow: hidden
+        }
+
+        .vimeo,
+        .youtube {
+            position: relative;
+            width: 100%
+        }
+
+        .youtube {
+            padding-bottom: 56.25%
+        }
+
+        .vimeo img {
+            width: 100%;
+            object-fit: contain;
+            z-index: 0
+        }
+
+        .youtube img {
+            object-fit: cover;
+            z-index: 0
+        }
+
+        .vimeo iframe,
+        .youtube iframe,
+        .youtube img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        .vimeo iframe,
+        .youtube iframe {
+            vertical-align: middle;
+            z-index: 1
+        }
+
+        .vimeo .icon,
+        .youtube .icon {
+            position: absolute;
+            height: auto;
+            width: auto;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            opacity: .3;
+            transition: opacity .2s;
+            z-index: 0
+        }
+
+        .vimeo:hover .icon,
+        .youtube:hover .icon {
+            opacity: .6;
+            transition: opacity .2s
+        }
+
+        .slideshare .inner,
+        .speakerdeck .inner {
+            position: relative;
+            width: 100%
+        }
+
+        .slideshare .inner iframe,
+        .speakerdeck .inner iframe {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            height: 100%
+        }
+
+        .MJX_Assistive_MathML {
+            display: none
+        }
+
+        .ui-infobar {
+            position: relative;
+            z-index: 2;
+            max-width: 760px;
+            margin: 25px auto -25px;
+            padding: 0 15px;
+            color: #777
+        }
+
+        .toc .invisable-node {
+            list-style-type: none
+        }
+
+        .ui-toc {
+            position: fixed;
+            bottom: 20px;
+            z-index: 998
+        }
+
+        .ui-toc-label {
+            opacity: .3;
+            background-color: #ccc;
+            border: none;
+            transition: opacity .2s
+        }
+
+        .ui-toc .open .ui-toc-label {
+            opacity: 1;
+            color: #fff;
+            transition: opacity .2s
+        }
+
+        .ui-toc-label:focus {
+            opacity: .3;
+            background-color: #ccc;
+            color: #000
+        }
+
+        .ui-toc-label:hover {
+            opacity: 1;
+            background-color: #ccc;
+            transition: opacity .2s
+        }
+
+        .ui-toc-dropdown {
+            margin-top: 23px;
+            margin-bottom: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+            max-width: 45vw;
+            width: 25vw;
+            max-height: 70vh;
+            overflow: auto;
+            text-align: inherit
+        }
+
+        .ui-toc-dropdown>.toc {
+            max-height: calc(70vh - 100px);
+            overflow: auto
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav {
+            padding-right: 0;
+            letter-spacing: .0029em
+        }
+
+        .ui-toc-dropdown a {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: pre
+        }
+
+        .ui-toc-dropdown .nav>li>a {
+            display: block;
+            padding: 4px 20px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #767676
+        }
+
+        .ui-toc-dropdown .nav>li:first-child:last-child>ul,
+        .ui-toc-dropdown .toc.expand ul {
+            display: block
+        }
+
+        .ui-toc-dropdown .nav>li>a:focus,
+        .ui-toc-dropdown .nav>li>a:hover {
+            padding-left: 19px;
+            color: #000;
+            text-decoration: none;
+            background-color: transparent;
+            border-left: 1px solid #000
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav>li>a:focus,
+        .ui-toc-dropdown[dir=rtl] .nav>li>a:hover {
+            padding-right: 19px;
+            border-left: none;
+            border-right: 1px solid #000
+        }
+
+        .ui-toc-dropdown .nav>.active:focus>a,
+        .ui-toc-dropdown .nav>.active:hover>a,
+        .ui-toc-dropdown .nav>.active>a {
+            padding-left: 18px;
+            font-weight: 700;
+            color: #000;
+            background-color: transparent;
+            border-left: 2px solid #000
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,
+        .ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,
+        .ui-toc-dropdown[dir=rtl] .nav>.active>a {
+            padding-right: 18px;
+            border-left: none;
+            border-right: 2px solid #000
+        }
+
+        .ui-toc-dropdown .nav .nav {
+            display: none;
+            padding-bottom: 10px
+        }
+
+        .ui-toc-dropdown .nav>.active>ul {
+            display: block
+        }
+
+        .ui-toc-dropdown .nav .nav>li>a {
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-left: 30px;
+            font-size: 12px;
+            font-weight: 400
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav .nav>li>a {
+            padding-right: 30px
+        }
+
+        .ui-toc-dropdown .nav .nav>li>ul>li>a {
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-left: 40px;
+            font-size: 12px;
+            font-weight: 400
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a {
+            padding-right: 40px
+        }
+
+        .ui-toc-dropdown .nav .nav>li>a:focus,
+        .ui-toc-dropdown .nav .nav>li>a:hover {
+            padding-left: 29px
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,
+        .ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover {
+            padding-right: 29px
+        }
+
+        .ui-toc-dropdown .nav .nav>li>ul>li>a:focus,
+        .ui-toc-dropdown .nav .nav>li>ul>li>a:hover {
+            padding-left: 39px
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,
+        .ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover {
+            padding-right: 39px
+        }
+
+        .ui-toc-dropdown .nav .nav>.active:focus>a,
+        .ui-toc-dropdown .nav .nav>.active:hover>a,
+        .ui-toc-dropdown .nav .nav>.active>a {
+            padding-left: 28px;
+            font-weight: 500
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,
+        .ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,
+        .ui-toc-dropdown[dir=rtl] .nav .nav>.active>a {
+            padding-right: 28px
+        }
+
+        .ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,
+        .ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,
+        .ui-toc-dropdown .nav .nav>.active>.nav>.active>a {
+            padding-left: 38px;
+            font-weight: 500
+        }
+
+        .ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,
+        .ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,
+        .ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a {
+            padding-right: 38px
+        }
+
+        .markdown-body {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif
+        }
+
+        html[lang^=ja] .markdown-body {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Helvetica, Roboto, Arial, Hiragino Kaku Gothic Pro, ヒラギノ角ゴ Pro W3, Osaka, Meiryo, メイリオ, MS Gothic, ＭＳ\ ゴシック, sans-serif
+        }
+
+        html[lang=zh-tw] .markdown-body {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Helvetica, Roboto, Arial, PingFang TC, Microsoft JhengHei, 微軟正黑, sans-serif
+        }
+
+        html[lang=zh-cn] .markdown-body {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Helvetica, Roboto, Arial, PingFang SC, Microsoft YaHei, 微软雅黑, sans-serif
+        }
+
+        html .markdown-body[lang^=ja] {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Helvetica, Roboto, Arial, Hiragino Kaku Gothic Pro, ヒラギノ角ゴ Pro W3, Osaka, Meiryo, メイリオ, MS Gothic, ＭＳ\ ゴシック, sans-serif
+        }
+
+        html .markdown-body[lang=zh-tw] {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Helvetica, Roboto, Arial, PingFang TC, Microsoft JhengHei, 微軟正黑, sans-serif
+        }
+
+        html .markdown-body[lang=zh-cn] {
+            font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Helvetica, Roboto, Arial, PingFang SC, Microsoft YaHei, 微软雅黑, sans-serif
+        }
+
+        html[lang^=ja] .ui-toc-dropdown {
+            font-family: Source Sans Pro, Helvetica, Arial, Meiryo UI, MS PGothic, ＭＳ\ Ｐゴシック, sans-serif
+        }
+
+        html[lang=zh-tw] .ui-toc-dropdown {
+            font-family: Source Sans Pro, Helvetica, Arial, Microsoft JhengHei UI, 微軟正黑UI, sans-serif
+        }
+
+        html[lang=zh-cn] .ui-toc-dropdown {
+            font-family: Source Sans Pro, Helvetica, Arial, Microsoft YaHei UI, 微软雅黑UI, sans-serif
+        }
+
+        html .ui-toc-dropdown[lang^=ja] {
+            font-family: Source Sans Pro, Helvetica, Arial, Meiryo UI, MS PGothic, ＭＳ\ Ｐゴシック, sans-serif
+        }
+
+        html .ui-toc-dropdown[lang=zh-tw] {
+            font-family: Source Sans Pro, Helvetica, Arial, Microsoft JhengHei UI, 微軟正黑UI, sans-serif
+        }
+
+        html .ui-toc-dropdown[lang=zh-cn] {
+            font-family: Source Sans Pro, Helvetica, Arial, Microsoft YaHei UI, 微软雅黑UI, sans-serif
+        }
+
+        .ui-affix-toc {
+            position: fixed;
+            top: 0;
+            max-width: 15vw;
+            max-height: 70vh;
+            overflow: auto
+        }
+
+        .back-to-top,
+        .expand-toggle,
+        .go-to-bottom {
+            display: block;
+            padding: 4px 10px;
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 12px;
+            font-weight: 500;
+            color: #999
+        }
+
+        .back-to-top:focus,
+        .back-to-top:hover,
+        .expand-toggle:focus,
+        .expand-toggle:hover,
+        .go-to-bottom:focus,
+        .go-to-bottom:hover {
+            color: #563d7c;
+            text-decoration: none
+        }
+
+        .back-to-top,
+        .go-to-bottom {
+            margin-top: 0
+        }
+
+        .ui-user-icon {
+            width: 20px;
+            height: 20px;
+            display: block;
+            border-radius: 3px;
+            margin-top: 2px;
+            margin-bottom: 2px;
+            margin-right: 5px;
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: cover
+        }
+
+        .ui-user-icon.small {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            vertical-align: middle;
+            margin: 0 0 .2em
+        }
+
+        .ui-infobar>small>span {
+            line-height: 22px
+        }
+
+        .ui-infobar>small .dropdown {
+            display: inline-block
+        }
+
+        .ui-infobar>small .dropdown a:focus,
+        .ui-infobar>small .dropdown a:hover {
+            text-decoration: none
+        }
+
+        .ui-published-note {
+            color: #337ab7
+        }
+
+        .ui-published-note .fa {
+            font-size: 20px;
+            vertical-align: top
+        }
+
+        .unselectable {
+            -webkit-user-select: none;
+            -o-user-select: none;
+            user-select: none
+        }
+
+        @media print {
+
+            blockquote,
+            div,
+            img,
+            pre,
+            table {
+                page-break-inside: avoid !important
+            }
+
+            a[href]:after {
+                font-size: 12px !important
+            }
+        }
+
+        .markdown-body.slides {
+            position: relative;
+            z-index: 1;
+            color: #222
+        }
+
+        .markdown-body.slides:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            background-color: currentColor;
+            box-shadow: 0 0 0 50vw
+        }
+
+        .markdown-body.slides section[data-markdown] {
+            position: relative;
+            margin-bottom: 1.5em;
+            background-color: #fff;
+            text-align: center
+        }
+
+        .markdown-body.slides section[data-markdown] code {
+            text-align: left
+        }
+
+        .markdown-body.slides section[data-markdown]:before {
+            content: "";
+            display: block;
+            padding-bottom: 56.23%
+        }
+
+        .markdown-body.slides section[data-markdown]>div:first-child {
+            position: absolute;
+            top: 50%;
+            left: 1em;
+            right: 1em;
+            transform: translateY(-50%);
+            max-height: 100%;
+            overflow: hidden
+        }
+
+        .markdown-body.slides section[data-markdown]>ul {
+            display: inline-block
+        }
+
+        .markdown-body.slides>section>section+section:after {
+            content: "";
+            position: absolute;
+            top: -1.5em;
+            right: 1em;
+            height: 1.5em;
+            border: 3px solid #777
+        }
+
+        body {
+            font-smoothing: subpixel-antialiased !important;
+            -webkit-font-smoothing: subpixel-antialiased !important;
+            -moz-osx-font-smoothing: auto !important;
+            text-shadow: 0 0 1em transparent, 1px 1px 1.2px rgba(0, 0, 0, .004);
+            -webkit-overflow-scrolling: touch;
+            letter-spacing: .025em
+        }
+
+        .focus,
+        :focus {
+            outline: none !important
+        }
+
+        ::-moz-focus-inner {
+            border: 0 !important
+        }
+
+        body {
+            font-family: Source Sans Pro, Helvetica, Arial, sans-serif
+        }
+
+        html[lang^=ja] body {
+            font-family: Source Sans Pro, Helvetica, Arial, Hiragino Kaku Gothic Pro, ヒラギノ角ゴ Pro W3, Osaka, Meiryo, メイリオ, MS Gothic, ＭＳ\ ゴシック, sans-serif
+        }
+
+        html[lang=zh-tw] body {
+            font-family: Source Sans Pro, Helvetica, Arial, PingFang TC, Microsoft JhengHei, 微軟正黑, sans-serif
+        }
+
+        html[lang=zh-cn] body {
+            font-family: Source Sans Pro, Helvetica, Arial, PingFang SC, Microsoft YaHei, 微软雅黑, sans-serif
+        }
+
+        abbr[title] {
+            border-bottom: none;
+            text-decoration: underline;
+            -webkit-text-decoration: underline dotted;
+            text-decoration: underline dotted
+        }
+
+        abbr[data-original-title],
+        abbr[title] {
+            cursor: help
+        }
+
+        body.modal-open {
+            overflow-y: auto;
+            padding-right: 0 !important
+        }
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true"
+        style="position: relative;">
+        <h1 id="VP3-SHM-tuple-list-for"><a class="anchor hidden-xs" href="#VP3-SHM-tuple-list-for"
+                title="VP3-SHM-tuple-list-for"><span class="octicon octicon-link"></span></a>VP3: SHM [tuple, list, for]
+        </h1>
+        <blockquote>
+            <p>為了避免有人還不知道，影片是自己選兩次來拍喔，你覺得這次作業有趣或是講起來比較容易的話，就可以選擇這次作業來拍。</p>
+        </blockquote>
+        <p>這次作業的說明在 <a href="#I-List">List</a>
+            部份的最後<strong>有些地方和老師的官方版本是不一樣的</strong>，是去年和老師討論過後修改的部份。因為涉及一些重要觀念，希望大家至少在 list 的說明部份以這裡為主喔。</p>
+        <p>此外，老師在作業部份規定得不夠清楚的部份，我也會在這邊把它規定的更清楚一點，所以希望大家作業規定部份也要看過這邊的版本。</p>
+        <h2 id="影片以及官方PDF"><a class="anchor hidden-xs" href="#影片以及官方PDF" title="影片以及官方PDF"><span
+                    class="octicon octicon-link"></span></a>影片以及官方PDF</h2>
+        <ul>
+            <li><a href="https://goo.gl/5Cj1FU" target="_blank" rel="noopener">影片</a></li>
+            <li><a href="pdf/VP3.pdf" target="_blank" rel="noopener">官方PDF</a></li>
+        </ul>
+        <h3 id="同學們的影片"><a class="anchor hidden-xs" href="#同學們的影片" title="同學們的影片"><span
+                    class="octicon octicon-link"></span></a>同學們的影片</h3>
+        <ul>
+            <li><a href="" target="_blank" rel="noopener">這部份當然是還沒有啦</a></li>
+        </ul>
+        <h2 id="作業繳交方式"><a class="anchor hidden-xs" href="#作業繳交方式" title="作業繳交方式"><span
+                    class="octicon octicon-link"></span></a>作業繳交方式</h2>
+        <blockquote>
+            <p>基本上電腦裡的所有檔案名稱最後面都會有一個點，並在點後面標記檔案類型，這就叫副檔名。比如說 Word 檔會叫 <code>文件一.docx</code>，Powerpoint 叫
+                <code>投影片.pptx</code>，大家最愛的 GIF 動圖叫 <code>NickYoung.gif</code>
+                等等。所以如果你平常看不到這些副檔名，那就代表副檔名被你的系統隱藏起來了，請先去打開它。不然如果你在副檔名 <code>py</code> 被隱藏起來的情況下把檔名 <code>must</code> 改成
+                <code>must.py</code>，那個檔案實際上會變成 <code>must.py.py</code>。</p>
+        </blockquote>
+        <p>請上傳一個 zip 檔（壓縮檔，請注意副檔名要是 <code>zip</code>）到 CEIBA，zip 檔內需要包含一個<strong>名稱是自己學號的資料夾</strong>，裡面包含一個或兩個 py
+            檔。請將必作部份取名為 <code>must.py</code>，選作部份取名為<code>optional.py</code>。若本次作業有拍攝說明影片，請<strong>將影片連結寫在</strong>
+            <code>video.txt</code> <strong>裡面，並一併放入學號資料夾中</strong>。</p>
+        <p>範例：（zip 檔名可以隨便取，CEIBA 系統會自己把檔名改掉）</p>
+        <pre><code>yoroshiku.zip
+└── r07222060
+    ├── must.py
+    ├── optional.py
+    └── video.txt
+</code></pre>
+        <blockquote>
+            <h4 id="助教註"><a class="anchor hidden-xs" href="#助教註" title="助教註"><span
+                        class="octicon octicon-link"></span></a>助教註:</h4>
+            <p>如果你是用 JuPyter notebook 寫的，請記得將你的程式用 <code>.py</code> 格式下載下來，不要給我 <code>.ipynb</code> 或甚至
+                <code>.html</code>。</p>
+        </blockquote>
+        <h3 id="繳交期限"><a class="anchor hidden-xs" href="#繳交期限" title="繳交期限"><span
+                    class="octicon octicon-link"></span></a>繳交期限</h3>
+        <p><code>2019/10/29 Tue 21:00</code></p>
+        <h1 id="作業說明正文"><a class="anchor hidden-xs" href="#作業說明正文" title="作業說明正文"><span
+                    class="octicon octicon-link"></span></a>作業說明正文</h1>
+        <h2 id="I-List"><a class="anchor hidden-xs" href="#I-List" title="I-List"><span
+                    class="octicon octicon-link"></span></a>I. List</h2>
+        <p>In the picture below, variable <code>a</code> is assigned to a <code>list</code>, which is an “ordered
+            collection of objects”. The objects can be integers, floats, strings, lists, or any other objects. In the
+            example here, the 0th element of <code>a</code> is integer 1, the 1st is integer 2, the 2nd is “x”, and so
+            forth. (Notice that in python, the order starts from 0.) More importantly, the elements of a list can be
+            mixed of any different types.</p>
+        <blockquote>
+            <p>助教註: Here I merged the picture and the words from professor’s PDF into a jupyter notebook. You can just
+                look at the screenshot below, but you can also get the <a href="example/VP3_python_list.ipynb" target="_blank"
+                    rel="noopener">ipynb</a> or <a href="example/VP3_python_list.html" target="_blank" rel="noopener">html</a> files if you want.
+            </p>
+        </blockquote>
+        <p><img src="pic/VP3/VP3_list.png" alt="python_list"></p>
+        <h3 id="Note"><a class="anchor hidden-xs" href="#Note" title="Note"><span
+                    class="octicon octicon-link"></span></a>Note:</h3>
+        <p>There are two storing spaces in python to store the variables, Namespace and Valuespace. Namespace stores the
+            variable names, such as <code>x</code>, <code>ball</code>, <code>ball.v</code>, etc. Valuespace stores the
+            values, such as <code>3</code>, <code>sphere()</code>, and <code>vec(5, 0, 3)</code>.</p>
+        <p><img src="pic/VP3/name_value_1.png" alt="name-value-1"></p>
+        <p>When we write <code>x = 1</code>, in python, it does the following. First it creates a space in Valuespace
+            and store the value 1 there. Then it creates a variable name <code>x</code> in Namespace. Finally, it let
+            <code>x</code> be pointed to 1.</p>
+        <p>When we write <code>y = x + 2</code>, it takes out explicitly the value the variable name <code>x</code>
+            points to, which is 1, adds it by 2 and gets 3, creates a new space in Valuespace and stores 3 there.
+            Finally, it creates variable <code>y</code> and points <code>y</code> to this space containing 3.</p>
+        <p><img src="pic/VP3/name_value_2.png" alt="name-value-2"></p>
+        <blockquote>
+            <p>助教註: The following part is written by myself and is different from the professor’s PDF. The reason will
+                be told later.</p>
+        </blockquote>
+        <p>If we write <code>b = a</code> like <code>In [7]</code> in the screenshot above, because <code>a</code> have
+            already pointed to the list <code>[1, 2, 'x', 4, 5]</code>, <code>b</code> will also point to the same
+            position in Valuespace, where the list is stored.</p>
+        <p><img src="pic/VP3/name_value_3.png" alt="name-value-3"></p>
+        <p>Then if we let <code>a[1] = 99</code>, python will go to the <code>list</code> which <code>a</code> points to
+            in Valuespace, and <strong>directly</strong> modify the element <code>a[1]</code> stored there. And because
+            <code>b</code> points to the same position as <code>a</code>, the value of <code>b</code> will also become
+            <code>[1, 99, 'x', 4, 5]</code>.</p>
+        <p><img src="pic/VP3/name_value_4.png" alt="name-value-4"></p>
+        <p>Most of the python objects (like <code>vec</code>, <code>sphere</code>, etc) also have this property, so if
+            we write <code>highest_pos = ball.pos</code> somewhere in VP2 trying to record the highest position of the
+            ball, it may not work. Because <code>highest_pos</code> actually points to the same vector as
+            <code>ball.pos</code>, its value changes as the ball moving.</p>
+        <p>However, some objects in python does not have this property. They are called “immutable object”, including
+            the numbers (<code>int</code>, <code>float</code>, <code>complex</code>), <code>str</code>,
+            <code>tuple</code>, etc. So we could obtain some results like:</p>
+        <p><img src="pic/VP3/VP3_immutable.png" alt="vp3-immutable"></p>
+        <p>(The <a href="example/VP3_immutable.ipynb" target="_blank" rel="noopener">ipynb</a> and <a href="example/VP3_immutable.html" target="_blank"
+                rel="noopener">html</a> files in this picture are over here)</p>
+        <blockquote>
+            <p>助教註: The existence of immutable objects is the reason why I rewrite this part. In Python, we can’t modify
+                the value of these objects. If you are interested in why this property causes the result above, you can
+                just google it or ask me.</p>
+        </blockquote>
+        <h2 id="II-Simple-Harmonic-Motion"><a class="anchor hidden-xs" href="#II-Simple-Harmonic-Motion"
+                title="II-Simple-Harmonic-Motion"><span class="octicon octicon-link"></span></a>II. Simple Harmonic
+            Motion</h2>
+        <pre><code class="python hljs"><span class="hljs-keyword">from</span> vpython <span class="hljs-keyword">import</span> *
+
+g = <span class="hljs-number">9.8</span>
+size, m = <span class="hljs-number">0.05</span>, <span class="hljs-number">0.2</span>
+L, k = <span class="hljs-number">0.5</span>, <span class="hljs-number">15</span>
+scene = canvas(width=<span class="hljs-number">500</span>, height=<span class="hljs-number">500</span>, center=vec(<span class="hljs-number">0</span>, <span class="hljs-number">-0.2</span>, <span class="hljs-number">0</span>), background=vec(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0</span>))
+ceiling = box(length=<span class="hljs-number">0.8</span>, height=<span class="hljs-number">0.005</span>, width=<span class="hljs-number">0.8</span>, color=color.blue)
+ball = sphere(radius=size, color=color.red)
+spring = helix(radius=<span class="hljs-number">0.02</span>, thickness=<span class="hljs-number">0.01</span>) <span class="hljs-comment"># default pos = vec(0, 0, 0)</span>
+ball.v = vec(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+ball.pos = vec(<span class="hljs-number">0</span>, -L, <span class="hljs-number">0</span>)
+  
+dt = <span class="hljs-number">0.001</span> 
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+    rate(<span class="hljs-number">1000</span>)
+    spring.axis = ball.pos - spring.pos                                <span class="hljs-comment"># new: extended from spring endpoint to ball</span>
+    
+    spring_force = -k * (mag(spring.axis) - L) * spring.axis.norm()    <span class="hljs-comment"># to get spring force vector</span>
+    ball.a = vector(<span class="hljs-number">0</span>, -g, <span class="hljs-number">0</span>) + spring_force / m                       <span class="hljs-comment"># ball acceleration = - g in y + spring force /m</span>
+    
+    ball.v += ball.a*dt
+    ball.pos += ball.v*dt
+</code></pre>
+        <h3 id="1-Tuple-assignment"><a class="anchor hidden-xs" href="#1-Tuple-assignment"
+                title="1-Tuple-assignment"><span class="octicon octicon-link"></span></a>1. Tuple assignment</h3>
+        <pre><code class="python hljs">size, m = <span class="hljs-number">0.05</span>, <span class="hljs-number">0.2</span> 
+<span class="hljs-comment"># or </span>
+(size, m) = (<span class="hljs-number">0.05</span>, <span class="hljs-number">0.2</span>)
+</code></pre>
+        <p><code>(0.05, 0.2)</code> is a <code>tuple</code> data type. When two tuples are on both sides of a
+            <code>=</code>, the values are assigned term by term. This can be done for as many terms as long as both
+            sides have the same number of variables and values.</p>
+        <h3 id="2"><a class="anchor hidden-xs" href="#2" title="2"><span class="octicon octicon-link"></span></a>2.</h3>
+        <pre><code class="python hljs">spring = helix(radius=<span class="hljs-number">0.02</span>, thickness=<span class="hljs-number">0.01</span>) <span class="hljs-comment"># default pos = vec(0, 0, 0)</span>
+</code></pre>
+        <p>Draw a spring as a <code>helix</code> object with radius = 0.02 and thickness = 0.01. Its endpoint defaults
+            to position <code>vec(0, 0, 0)</code>. The parameters can be set by
+            <code>spring = helix(pos = vector(0,0,0), radius=0.02, thickness =0.01)</code> when it is constructed, or
+            they can be changed later by assignment, such as <code>spring.pos = vector(0,0,0)</code>. The
+            <code>axis</code> attribute, which is used in <code>spring.axis = ball.pos - spring.pos</code>, draws the
+            spring from <code>spring.pos</code> to <code>ball.pos</code></p>
+        <h3 id="3-Force-vector-by-the-spring"><a class="anchor hidden-xs" href="#3-Force-vector-by-the-spring"
+                title="3-Force-vector-by-the-spring"><span class="octicon octicon-link"></span></a>3. Force vector by
+            the spring</h3>
+        <pre><code class="python hljs">    spring_force = -k * (mag(spring.axis) - r) * spring.axis.norm()
+</code></pre>
+        <p><code>mag(some_vector)</code> is a function that yields the magnitude of the vector. The <code>norm()</code>
+            “method” will give the unit direction vector of the vector attached, e.g. <code>spring.axis.norm()</code>
+            gives the unit direction vector for <code>spring.axis</code>. Can you figure out why this line of code
+            yields the force generated by the spring on the ball?</p>
+        <h3 id="4-Find-the-acceleration"><a class="anchor hidden-xs" href="#4-Find-the-acceleration"
+                title="4-Find-the-acceleration"><span class="octicon octicon-link"></span></a>4. Find the acceleration
+        </h3>
+        <pre><code class="python hljs">    ball.a = vector(<span class="hljs-number">0</span>, -g, <span class="hljs-number">0</span>) + spring_force / m
+</code></pre>
+        <h2 id="III-Multiballs"><a class="anchor hidden-xs" href="#III-Multiballs" title="III-Multiballs"><span
+                    class="octicon octicon-link"></span></a>III. Multiballs</h2>
+        <pre><code class="python hljs"><span class="hljs-keyword">from</span> vpython <span class="hljs-keyword">import</span> *
+
+g = <span class="hljs-number">9.8</span>
+size, m = <span class="hljs-number">0.05</span>, <span class="hljs-number">0.2</span>
+L, k = <span class="hljs-number">0.5</span>, [<span class="hljs-number">15</span>, <span class="hljs-number">12</span>, <span class="hljs-number">17</span>]
+v = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2.2</span>]
+d = [<span class="hljs-number">-0.06</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-0.1</span>]
+
+scene = canvas(width=<span class="hljs-number">400</span>, height=<span class="hljs-number">400</span>, center=vec(<span class="hljs-number">0.4</span>, <span class="hljs-number">0.2</span>, <span class="hljs-number">0</span>), align=<span class="hljs-string">'left'</span>, background=vec(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-number">0</span>))
+floor = box(pos=vec(<span class="hljs-number">0.4</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), length=<span class="hljs-number">0.8</span>, height=<span class="hljs-number">0.005</span>, width=<span class="hljs-number">0.8</span>, color=color.blue)
+wall = box(pos=vec(<span class="hljs-number">0</span>, <span class="hljs-number">0.05</span>, <span class="hljs-number">0</span>), length=<span class="hljs-number">0.01</span>, height=<span class="hljs-number">0.1</span>, width=<span class="hljs-number">0.8</span>)
+
+balls = []
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):
+    ball = sphere(pos=vec(L+d[i], size, (i<span class="hljs-number">-1</span>)*<span class="hljs-number">3</span>*size), radius=size, color=color.red) 
+    ball.v = vec(v[i], <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+    balls.append(ball)
+    
+springs =[]
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>):
+    spring = helix(pos=vec(<span class="hljs-number">0</span>, size, (i<span class="hljs-number">-1</span>)*<span class="hljs-number">3</span>*size), radius=<span class="hljs-number">0.02</span>, thickness=<span class="hljs-number">0.01</span>) 
+    spring.axis = balls[i].pos - spring.pos
+    spring.k = k[i]
+    springs.append(spring)
+</code></pre>
+        <p>This code generates a list of 3 ball objects on the floor, a list of 3 springs connecting the 3 balls,
+            respectively, to the wall. Have a look how <code>for</code> is used in this program.</p>
+        <p>The only thing new to you is</p>
+        <pre><code class="python hljs"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">3</span>): 
+    codes
+    ...
+</code></pre>
+        <p>in which <code>i</code> is assigned sequentially to <code>0</code>, <code>1</code>, and <code>2</code> and
+            the associated codes are executed. If we want to execute from <code>1</code> to <code>2</code>, we can use
+        </p>
+        <pre><code class="python hljs"><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(<span class="hljs-number">1</span>,<span class="hljs-number">3</span>):
+    codes
+    ...
+</code></pre>
+        <h2 id="IV-Homework"><a class="anchor hidden-xs" href="#IV-Homework" title="IV-Homework"><span
+                    class="octicon octicon-link"></span></a>IV. Homework</h2>
+        <h3 id="Must"><a class="anchor hidden-xs" href="#Must" title="Must"><span
+                    class="octicon octicon-link"></span></a>Must</h3>
+        <p>Combine the above program and write a simulation program that has three independent horizontal SHMs (of
+            different spring constants, of different starting positions, of different starting velocities).</p>
+        <ol>
+            <li>
+                <p>Plot versus time the total of the instant kinetic energies of the three balls, and the total of the
+                    instant spring potential energies of the three balls in the same graph.</p>
+            </li>
+            <li>
+                <p>Plot versus time the averaged total kinetic energy over the time period (from the beginning of the
+                    simulation till the time of the current plot point) and the averaged total spring potential energy.
+                    What interesting results do you find?</p>
+            </li>
+        </ol>
+        <p><strong>Note:</strong> If you have no idea what should your results look like, just go see the video.
+            Professor always shows some demos there.</p>
+        <p><strong>P.S.</strong> You can talk about the interesting points of your result in the video, if there is one.
+        </p>
+        <h3 id="Optional"><a class="anchor hidden-xs" href="#Optional" title="Optional"><span
+                    class="octicon octicon-link"></span></a>Optional</h3>
+        <p>First generate two lists:</p>
+        <pre><code class="python hljs">sizes = [<span class="hljs-number">0.06</span>, <span class="hljs-number">0.04</span>]     <span class="hljs-comment"># for balls’ sizes </span>
+ms = [<span class="hljs-number">0.2</span>, <span class="hljs-number">0.12</span>]         <span class="hljs-comment"># for balls’ mass</span>
+</code></pre>
+        <p>Instead of hanging one ball on the spring to the ceiling, let the two balls connect together horizontally by
+            the spring. Ignore the gravity and simulate the oscillation of the two-ball system in x axis. The spring
+            constant <code>L</code> and length <code>k</code> are 0.5 and 15, respectively. Both balls are initially at
+            rest with their positions separated by <code>1.1*L</code>. Print the period of the oscillation. (not by
+            formula)</p>
+        <h2 id="V-Grading-Policy"><a class="anchor hidden-xs" href="#V-Grading-Policy" title="V-Grading-Policy"><span
+                    class="octicon octicon-link"></span></a>V. Grading Policy</h2>
+        <h3 id="Must1"><a class="anchor hidden-xs" href="#Must1" title="Must1"><span
+                    class="octicon octicon-link"></span></a>Must</h3>
+        <ul>
+            <li>Successfully made the three oscillators oscillating. (20%)</li>
+            <li>The energy looks conserved. (20%)</li>
+            <li>Correctly plotted the instant total kinetic/potential energy. (20%)</li>
+            <li>The average kinetic/potential energy both converge to some non-zero constant. (20%)</li>
+            <li>The average kinetic and potential energy converge to the same value. (20%)</li>
+        </ul>
+        <h3 id="Optional1"><a class="anchor hidden-xs" href="#Optional1" title="Optional1"><span
+                    class="octicon octicon-link"></span></a>Optional</h3>
+        <ul>
+            <li>Successfully made the two balls oscillating. (60%)</li>
+            <li>Correctly print the period. (40%)</li>
+        </ul>
+    </div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button"
+                aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc">
+                    <ul class="nav">
+                        <li class=""><a href="#VP3-SHM-tuple-list-for" title="VP3: SHM [tuple, list, for]">VP3: SHM [tuple, list, for]</a>
+                            <ul class="nav">
+                                <li class=""><a href="#影片以及官方PDF" title="影片以及官方PDF">影片以及官方PDF</a>
+                                    <ul class="nav">
+                                        <li class=""><a href="#同學們的影片" title="同學們的影片">同學們的影片</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="#作業繳交方式" title="作業繳交方式">作業繳交方式</a>
+                                    <ul class="nav">
+                                        <li class=""><a href="#繳交期限" title="繳交期限">繳交期限</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="#作業說明正文" title="作業說明正文">作業說明正文</a>
+                            <ul class="nav">
+                                <li class=""><a href="#I-List" title="I. List">I. List</a>
+                                    <ul class="nav">
+                                        <li class=""><a href="#Note" title="Note:">Note:</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="#II-Simple-Harmonic-Motion" title="II. Simple Harmonic Motion">II. Simple Harmonic Motion</a>
+                                    <ul class="nav">
+                                        <li class=""><a href="#1-Tuple-assignment" title="1. Tuple assignment">1. Tuple assignment</a></li>
+                                        <li class=""><a href="#2" title="2.">2.</a></li>
+                                        <li class=""><a href="#3-Force-vector-by-the-spring"
+                                                title="3. Force vector by the spring">3. Force vector by the spring</a></li>
+                                        <li class=""><a href="#4-Find-the-acceleration"
+                                                title="4. Find the acceleration">4. Find the acceleration</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="#III-Multiballs" title="III. Multiballs">III. Multiballs</a></li>
+                                <li class=""><a href="#IV-Homework" title="IV. Homework">IV. Homework</a>
+                                    <ul class="nav">
+                                        <li class=""><a href="#Must" title="Must">Must</a></li>
+                                        <li><a href="#Optional" title="Optional">Optional</a></li>
+                                    </ul>
+                                </li>
+                                <li class=""><a href="#V-Grading-Policy" title="V. Grading Policy">V. Grading Policy</a>
+                                    <ul class="nav">
+                                        <li><a href="#Must1" title="Must">Must</a></li>
+                                        <li class=""><a href="#Optional1" title="Optional">Optional</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top"
+                        href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix"
+        style="top:17px;display:none;" null null>
+        <div class="toc">
+            <ul class="nav">
+                <li class=""><a href="#VP3-SHM-tuple-list-for" title="VP3: SHM [tuple, list, for]">VP3: SHM [tuple, list, for]</a>
+                    <ul class="nav">
+                        <li class=""><a href="#影片以及官方PDF" title="影片以及官方PDF">影片以及官方PDF</a>
+                            <ul class="nav">
+                                <li class=""><a href="#同學們的影片" title="同學們的影片">同學們的影片</a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="#作業繳交方式" title="作業繳交方式">作業繳交方式</a>
+                            <ul class="nav">
+                                <li class=""><a href="#繳交期限" title="繳交期限">繳交期限</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class=""><a href="#作業說明正文" title="作業說明正文">作業說明正文</a>
+                    <ul class="nav">
+                        <li class=""><a href="#I-List" title="I. List">I. List</a>
+                            <ul class="nav">
+                                <li class=""><a href="#Note" title="Note:">Note:</a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="#II-Simple-Harmonic-Motion" title="II. Simple Harmonic Motion">II. Simple Harmonic Motion</a>
+                            <ul class="nav">
+                                <li class=""><a href="#1-Tuple-assignment" title="1. Tuple assignment">1. Tuple assignment</a></li>
+                                <li class=""><a href="#2" title="2.">2.</a></li>
+                                <li class=""><a href="#3-Force-vector-by-the-spring"
+                                        title="3. Force vector by the spring">3. Force vector by the spring</a></li>
+                                <li class=""><a href="#4-Find-the-acceleration" title="4. Find the acceleration">4. Find the acceleration</a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="#III-Multiballs" title="III. Multiballs">III. Multiballs</a></li>
+                        <li class=""><a href="#IV-Homework" title="IV. Homework">IV. Homework</a>
+                            <ul class="nav">
+                                <li class=""><a href="#Must" title="Must">Must</a></li>
+                                <li><a href="#Optional" title="Optional">Optional</a></li>
+                            </ul>
+                        </li>
+                        <li class=""><a href="#V-Grading-Policy" title="V. Grading Policy">V. Grading Policy</a>
+                            <ul class="nav">
+                                <li><a href="#Must1" title="Must">Must</a></li>
+                                <li class=""><a href="#Optional1" title="Optional">Optional</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a
+                class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js"
+        integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle() {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
