@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        VP8: Equipartition of energy [class and module]
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @charset "UTF-8";@import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;padding:0 15px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-published-note{color:#337ab7}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true" style="position: relative;"><h1 id="VP8-Equipartition-of-energy-class-and-module"><a class="anchor hidden-xs" href="#VP8-Equipartition-of-energy-class-and-module" title="VP8-Equipartition-of-energy-class-and-module"><span class="octicon octicon-link"></span></a>VP8: Equipartition of energy [class and module]</h1><p>這次我們跳過了 VP7 直接來寫 VP8，VP7 用到的 <code>numpy</code> 其實也是 Python 中滿重要的一個東西，不過在本次作業裡剛好不會用到，就等以後用到的時候再來補充了。（不確定是這學期還下學期）</p><h2 id="影片以及官方pdf"><a class="anchor hidden-xs" href="#影片以及官方pdf" title="影片以及官方pdf"><span class="octicon octicon-link"></span></a>影片以及官方pdf</h2><ul>
+<li><a href="https://goo.gl/2jEFkT" target="_blank" rel="noopener">影片</a></li>
+<li><a href="pdf/VP8.pdf" target="_blank" rel="noopener">官方pdf</a></li>
+</ul><h3 id="同學們的影片"><a class="anchor hidden-xs" href="#同學們的影片" title="同學們的影片"><span class="octicon octicon-link"></span></a>同學們的影片</h3><ul>
+<li><a href="" target="_blank" rel="noopener">這部份當然是還沒有啦</a></li>
+</ul><h2 id="作業繳交格式"><a class="anchor hidden-xs" href="#作業繳交格式" title="作業繳交格式"><span class="octicon octicon-link"></span></a>作業繳交格式</h2><p>請上傳一個 zip 檔（壓縮檔，請注意副檔名要是 <code>zip</code>）到 CEIBA，zip 檔內需要包含一個<strong>名稱是自己學號的資料夾</strong>，裡面包含兩個 py 檔。請將必作部份取名為 <code>must.py</code>，另一個檔案則是 <code>diatomic.py</code>（後面會有關於這個檔案的說明）。若本次作業有拍攝說明影片，請<strong>將影片連結寫在</strong> <code>video.txt</code> <strong>裡面，並一併放入學號資料夾中</strong>。</p><p>範例：（zip 檔名可以隨便取，CEIBA 系統會自己把檔名改掉）</p><pre><code>tsukareta.zip
+└── r07222060
+    ├── must.py
+    ├── diatomic.py
+    └── video.txt
+</code></pre><blockquote>
+<h4 id="助教註"><a class="anchor hidden-xs" href="#助教註" title="助教註"><span class="octicon octicon-link"></span></a>助教註:</h4>
+<p>如果你是用 JuPyter notebook 寫的，請記得將你的程式用 <code>.py</code> 格式下載下來，不要給我 <code>.ipynb</code> 或甚至 <code>.html</code>。</p>
+</blockquote><h3 id="繳交期限"><a class="anchor hidden-xs" href="#繳交期限" title="繳交期限"><span class="octicon octicon-link"></span></a>繳交期限</h3><p><code>2019/12/26 THU 21:00</code></p><h2 id="I-Introduction"><a class="anchor hidden-xs" href="#I-Introduction" title="I-Introduction"><span class="octicon octicon-link"></span></a>I. Introduction</h2><p>For a system in thermal equilibrium, every degree of freedom of every particle has the same expectation value of energy, hence the name equipartition of energy.</p><p><img src="pic/VP8/0.png" alt="0"></p><p>In the above figure, we have 20 artificial molecules, each composed of two atoms, O (red ball) and C (blue ball), and they are connected by a bond (white cylinder). Each molecule can have translational motion, vibrational motion, and rotational motion.</p><p><img src="pic/VP8/1.png" alt="1"></p><ul>
+<li>The translational motion of the center of mass of the molecule has 3 degrees of freedom (f = 3), corresponding to motion in x, y, and z. It is associated with kinetic energy of the center of mass, <code>com_K</code>.</li>
+<li>The vibrational motion (red arrows) has f = 2. Half of it (f = 1) is associated with vibrational kinetic energy <code>v_K</code> and half of it (f = 1) vibrational potential energy <code>v_P</code>.</li>
+<li>The rotational motion (grey arrows) has f = 2, corresponding to the 2 rotational motions with their axes perpendicular to the bond direction, and is associated with the rotational kinetic energy <code>r_K</code>. For rotational motion, f = 2 instead of f = 3, because the rotation with the axis parallel to the bond direction is not discernable.</li>
+</ul><p>Since for each available degree of freedom, the expected energy is the same, therefore statistically, if we add up the energies of the different types of motions respectively for all molecules and averaged over time, the ratio between them will be <code>avg_com_K</code> : <code>avg_v_K</code> : <code>avg_v_P</code> : <code>avg_r_K</code> = 3 : 1 : 1 : 2. (<strong>Notice: Here we do not consider quantum effect, therefore all 3 types of the motions will be available</strong>). In this homework, we will simulate that.</p><p>In addition, we will learn to use python’s module feature to finish the homework in a more systematical way. Python provides many useful modules, such as <code>numpy</code> and <code>vpython</code>. For example, every time you write <code>from vpython import *</code>. you can use everything provided by the module <code>vpython</code>, such as <code>canvas()</code>, <code>sphere()</code>, and etc. We can also write our own module. One of the reason is that this module is very useful and can be used again and again in the future. The other reason is that we do not want the main program to look very complicated, so we separate the program into layers, allowing each layer to handle different things. In this homework, we provide two template files, <code>diatomic.py</code>, which is the module file to handle each individual CO molecule and their collisions, and <code>VP8.py</code>, which is the main program. You need to put these two files into the same file folder. When the module is run for the first time, a <code>diatomic.pyc</code> will be generated and stored in the subfolder <code>__pycache__</code>.</p><h2 id="II-the-template-file-of-the-diatomic-module"><a class="anchor hidden-xs" href="#II-the-template-file-of-the-diatomic-module" title="II-the-template-file-of-the-diatomic-module"><span class="octicon octicon-link"></span></a>II. the template file of the diatomic module</h2><p><code>diatomic.py</code>:</p><pre><code class="python hljs"><span class="hljs-keyword">from</span> vpython <span class="hljs-keyword">import</span> *
+size, m_o, m_c, k_bond = <span class="hljs-number">31E-12</span>, <span class="hljs-number">16.0</span>/<span class="hljs-number">6E23</span>, <span class="hljs-number">12.0</span>/<span class="hljs-number">6E23</span>, <span class="hljs-number">18600.0</span>    <span class="hljs-comment"># These numbers are all made up</span>
+d = <span class="hljs-number">2.5</span>*size
+dt = <span class="hljs-number">1e-16</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CO_molecule</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pos, axis)</span>:</span>
+        self.O = sphere(pos=pos, radius=size, color=color.red)
+        self.C = sphere(pos=pos+axis, radius=size, color=color.blue)
+        self.bond = cylinder(pos=pos, axis=axis, radius=size/<span class="hljs-number">2.0</span>, color=color.white)
+        self.O.m = m_o
+        self.C.m = m_c
+        self.O.v = vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+        self.C.v = vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+        self.bond.k = k_bond
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bond_force_on_O</span><span class="hljs-params">(self)</span>:</span>        <span class="hljs-comment"># return bond force acted on the O atom</span>
+        <span class="hljs-keyword">return</span> self.bond.k * (mag(self.bond.axis)-d) * norm(self.bond.axis)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">time_lapse</span><span class="hljs-params">(self, dt)</span>:</span>         <span class="hljs-comment"># by bond's force, calculate a, v and pos of C and O, and bond's pos and axis after dt </span>
+        self.C.a = -self.bond_force_on_O() / self.C.m
+        self.O.a = self.bond_force_on_O() / self.O.m
+        self.C.v += self.C.a * dt
+        self.O.v += self.O.a * dt
+        self.C.pos += self.C.v * dt
+        self.O.pos += self.O.v * dt
+        self.bond.axis = self.C.pos - self.O.pos
+        self.bond.pos = self.O.pos
+    
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">com</span><span class="hljs-params">(self)</span>:</span>                    <span class="hljs-comment"># return position of center of mass</span>
+        <span class="hljs-keyword">return</span> vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">com_v</span><span class="hljs-params">(self)</span>:</span>                  <span class="hljs-comment"># return velocity of center of mass</span>
+        <span class="hljs-keyword">return</span> vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">v_P</span><span class="hljs-params">(self)</span>:</span>                    <span class="hljs-comment"># return potential energy of the bond for the vibration motion</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">v_K</span><span class="hljs-params">(self)</span>:</span>                    <span class="hljs-comment"># return kinetic energy of the vibration motion</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">r_K</span><span class="hljs-params">(self)</span>:</span>                    <span class="hljs-comment"># return kinetic energy of the rotational motion</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">com_K</span><span class="hljs-params">(self)</span>:</span>                  <span class="hljs-comment">#return kinetic energy of the translational motion of the center of mass</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">collision</span><span class="hljs-params">(a1, a2)</span>:</span>
+        v1prime = a1.v - <span class="hljs-number">2</span> * a2.m/(a1.m+a2.m) *(a1.pos-a2.pos) * dot (a1.v-a2.v, a1.pos-a2.pos) / mag(a1.pos-a2.pos)**<span class="hljs-number">2</span>
+        v2prime = a2.v - <span class="hljs-number">2</span> * a1.m/(a1.m+a2.m) *(a2.pos-a1.pos) * dot (a2.v-a1.v, a2.pos-a1.pos) / mag(a2.pos-a1.pos)**<span class="hljs-number">2</span>
+        <span class="hljs-keyword">return</span> v1prime, v2prime
+         
+    <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+        a = CO_molecule(pos=vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), axis = vector(<span class="hljs-number">2.6</span>*size, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>))
+        a.O.v = vector(<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0</span>)
+        a.C.v = vector(<span class="hljs-number">2.0</span>, <span class="hljs-number">-1.0</span>, <span class="hljs-number">0</span>)
+        a.time_lapse(dt)
+        print(a.bond_force_on_O(), a.com(), a.com_v(), a.v_P(), a.v_K(), a.r_K(), a.com_K())
+
+</code></pre><p>Here, some usage of python syntax new to you is explained in the following <code>class CO_molecule:</code></p><p>We declare a class called <code>CO_molecule</code>, which does not inherit from any previous known class, thus no parentheses behind it. For a new class, usually the first method is <code>__init__(self, ....)</code>, before and behind init are double underlines.</p><pre><code class="python hljs"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pos, axis)</span>:</span> 
+    self.O = sphere(pos=pos, radius=size, color=color.red)
+    self.C = sphere(pos=pos+axis, radius=size, color=color.blue)
+    self.bond = cylinder(pos=pos, axis=axis, radius=size/<span class="hljs-number">2.0</span>, color=color.white)
+    self.O.m = m_o
+    self.C.m = m_c
+    self.O.v = vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+    self.C.v = vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+    self.bond.k = k_bond
+</code></pre><p>is to initialize the object when <code>CO_molecule(pos = ..., axis=...)</code> is called to create an object. Here, it first creates two sphere object for O atom and C atom and creates a cylinder for the bond. It then assign the basic parameters for the CO molecule.</p><p>Then we write all other methods to complete the class, including:</p><pre><code class="python hljs"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">bond_force_on_O</span><span class="hljs-params">(self)</span>:</span>    <span class="hljs-comment"># return bond force acted on the O atom </span>
+    <span class="hljs-keyword">return</span> self.bond.k * (mag(self.bond.axis)-d) * norm(self.bond.axis)
+</code></pre><p>to calculate the force acting by the bond on the O atom by assuming the bond works like a spring, and</p><pre><code class="python hljs"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">time_lapse</span><span class="hljs-params">(self, dt)</span>:</span>         <span class="hljs-comment"># by bond's force, calculate a, v and pos of C and O, and bond's pos and axis after dt </span>
+    self.C.a = - self.bond_force_on_O() / self.C.m
+    self.O.a = self.bond_force_on_O() / self.O.m
+    self.C.v += self.C.a * dt
+    self.O.v += self.O.a * dt
+    self.C.pos += self.C.v * dt
+    self.O.pos += self.O.v * dt
+    self.bond.axis = self.C.pos - self.O.pos
+    self.bond.pos = self.O.pos
+</code></pre><p>to calculate both C and O atoms’ acceleration, velocities, then positions and axis, for a short time <code>dt</code>.</p><h2 id="III-Homework"><a class="anchor hidden-xs" href="#III-Homework" title="III-Homework"><span class="octicon octicon-link"></span></a>III. Homework</h2><h3 id="Must-Part-1"><a class="anchor hidden-xs" href="#Must-Part-1" title="Must-Part-1"><span class="octicon octicon-link"></span></a>Must Part 1</h3><p>It is your job to finish the rest methods for class <code>CO_molecule</code>. <code>com( )</code> is to return the position vector of the center of the mass of the molecule. <code>com_v( )</code> is to return the velocity vector of the center of mass. <code>v_P( )</code> is to return the potential energy stored in the bond similar to the potential energy stored in a spring. <code>v_K( )</code> is to return the kinetic energy associated to the two atoms’ motion relative to the center of mass and parallel to the bond axis. <code>r_K( )</code> is to return the kinetic energassociated to the two atoms’ motion relative to the center of mass and perpendicular to the bond axis. <code>com_K( )</code> is to return of kinetic energy of the center of mass.</p><p>After you finish writing all the methods in <code>CO_molecule</code> class, you should check its correctness before proceeding to the main program. If this file, <code>diatomic.py</code> is executed by itself as the main program, the lines under <code>if __name__ == '__main__':</code> will be executed. If this file is imported from other program as a module, the lines under <code>if __name__ == '__main__':</code> will not be executed. This is a convenient way to test the correctness of this module. This way of coding has an advantage. One can separate a large program into several modules with smaller sections ocodes, which are more easily to debug. It means that we can write smaller sections of codes and debug them without wasting time on other modules.</p><p>After you complete <code>diatomic.py</code> correctly, you can test your module’s correctness by the following code:</p><pre><code class="python hljs"><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    a = CO_molecule(pos=vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), axis=vector(<span class="hljs-number">2.6</span>*size, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>))
+    a.O.v = vector(<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0</span>)
+    a.C.v = vector(<span class="hljs-number">2.0</span>, <span class="hljs-number">-1.0</span>, <span class="hljs-number">0</span>)
+    a.time_lapse(dt)
+    print(a.bond_force_on_O(), a.com(), a.com_v(), a.v_P(), a.v_K(), a.r_K(), a.com_K())
+</code></pre><p>This will generate <code>a</code>, an object from class <code>CO_molecule</code>, with the given <code>pos</code> and <code>axis</code>. It will then assign the velocities for <code>a</code>'s two atoms O and C. It then runs <code>a.time_lapse(dt)</code> to let <code>a</code> to proceed a short time <code>dt</code>. Then, if your codes are correctly written, you will have the following printed results:</p><pre><code>&lt;5.76609e-08, -1.43079e-13, 0&gt; &lt;3.4543e-11, 1.42857e-17, 0&gt; &lt;1.42857, 0.142857, 0&gt; 8.937585694598954e-20 1.4028593914919891e-24 2.2857114754936572e-23 4.8095238095238086e-23
+</code></pre><h3 id="Must-Part-2"><a class="anchor hidden-xs" href="#Must-Part-2" title="Must-Part-2"><span class="octicon octicon-link"></span></a>Must Part 2</h3><p>the template file of the main program <code>must.py</code></p><pre><code class="python hljs"><span class="hljs-keyword">from</span> vpython <span class="hljs-keyword">import</span> * 
+<span class="hljs-keyword">from</span> diatomic <span class="hljs-keyword">import</span> *
+
+N = <span class="hljs-number">20</span>                                 <span class="hljs-comment"># 20 molecules</span>
+L = ((<span class="hljs-number">24.4e-3</span>/(<span class="hljs-number">6e+23</span>))*N)**(<span class="hljs-number">1</span>/<span class="hljs-number">3.0</span>)/<span class="hljs-number">50</span>  <span class="hljs-comment"># 2L is the length of the cubic container box, the number is made up</span>
+m = <span class="hljs-number">14e-3</span>/<span class="hljs-number">6e+23</span>                        <span class="hljs-comment"># average mass of O and C</span>
+k, T = <span class="hljs-number">1.38e-23</span>, <span class="hljs-number">298.0</span>                 <span class="hljs-comment"># some constants to set up the initial speed</span>
+initial_v = (<span class="hljs-number">3</span>*k*T/m)**<span class="hljs-number">0.5</span>             <span class="hljs-comment"># some constant</span>
+
+scene = canvas(width=<span class="hljs-number">400</span>, height=<span class="hljs-number">400</span>, align=<span class="hljs-string">'left'</span>, background=vec(<span class="hljs-number">1</span>, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>)) 
+container = box(length=<span class="hljs-number">2</span>*L, height=<span class="hljs-number">2</span>*L, width=<span class="hljs-number">2</span>*L, opacity=<span class="hljs-number">0.4</span>, color=color.yellow ) 
+energies = graph(width=<span class="hljs-number">600</span>, align=<span class="hljs-string">'left'</span>, ymin=<span class="hljs-number">0</span>)
+
+c_avg_com_K = gcurve(color=color.green)
+c_avg_v_P = gcurve(color=color.red)
+c_avg_v_K = gcurve(color=color.purple)
+c_avg_r_K = gcurve(color=color.blue)
+
+COs=[]
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(N):            <span class="hljs-comment"># initialize the 20 CO molecules</span>
+    O_pos = vec(random()<span class="hljs-number">-0.5</span>, random()<span class="hljs-number">-0.5</span>, random()<span class="hljs-number">-0.5</span>)*L       <span class="hljs-comment"># random() yields a random number between 0 and 1 </span>
+    CO = CO_molecule(pos=O_pos, axis = vector(<span class="hljs-number">1.0</span>*d, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>))       <span class="hljs-comment"># generate one CO molecule</span>
+    CO.C.v = vector(initial_v*random(), initial_v*random(), initial_v*random())    <span class="hljs-comment"># set up the initial velocity of C randomly </span>
+    CO.O.v = vector(initial_v*random(), initial_v*random(), initial_v*random())    <span class="hljs-comment"># set up the initial velocity of O randomly </span>
+    COs.append(CO)            <span class="hljs-comment"># store this molecule into list COs</span>
+
+times = <span class="hljs-number">0</span>                     <span class="hljs-comment"># number of loops that has been run</span>
+dt = <span class="hljs-number">5e-16</span> 
+t = <span class="hljs-number">0</span>
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+    rate(<span class="hljs-number">3000</span>) 
+    <span class="hljs-keyword">for</span> CO <span class="hljs-keyword">in</span> COs:
+        CO.time_lapse(dt)
+        
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(N<span class="hljs-number">-1</span>):        <span class="hljs-comment"># the first N-1 molecules</span>
+        <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(i+<span class="hljs-number">1</span>,N):  <span class="hljs-comment"># from i+1 to the last molecules, to avoid double checking</span>
+            <span class="hljs-keyword">pass</span>                <span class="hljs-comment">## change this to check and handle the collisions between the atoms of different molecules </span>
+        
+    <span class="hljs-keyword">for</span> CO <span class="hljs-keyword">in</span> COs:
+        <span class="hljs-keyword">pass</span>                    <span class="hljs-comment">## change this to check and handle the collision of the atoms of all molecules on all 6 walls</span>
+    
+    <span class="hljs-comment">## sum com_K, v_K, v_P, and r_K for all molecules, respectively,</span>
+    <span class="hljs-comment">## to get total_com_K, total_v_K, total_v_P, total_r_K at</span>
+    <span class="hljs-comment">## the current moment</span>
+    
+    <span class="hljs-comment">## calculate avg_com_K to be the time average of total_com_K</span>
+    <span class="hljs-comment">## since the beginning of the simulation, and do the same </span>
+    <span class="hljs-comment">## for others.</span>
+    
+    <span class="hljs-comment">## plot avg_com_K, avg_v_K, avg_v_P, and avg_r_K</span>
+</code></pre><p>In this main program, all the codes are explained by the corresponding comments. Read them carefully. You need to complete all those marked by <code>##</code>. If your program works well, you will observe something similar to the following figure, in which <code>avg_com_K</code> : <code>avg_v_K</code> : <code>avg_v_P</code> : <code>avg_r_K</code> = 3 (green) : 1 (red) : 1(purple) : 2(blue).</p><p><img src="pic/VP8/2.png" alt="2"></p></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#VP8-Equipartition-of-energy-class-and-module" title="VP8: Equipartition of energy [class and module]">VP8: Equipartition of energy [class and module]</a><ul class="nav">
+<li><a href="#影片以及官方pdf" title="影片以及官方pdf">影片以及官方pdf</a><ul class="nav">
+<li><a href="#同學們的影片" title="同學們的影片">同學們的影片</a></li>
+</ul>
+</li>
+<li><a href="#作業繳交格式" title="作業繳交格式">作業繳交格式</a><ul class="nav">
+<li><a href="#繳交期限" title="繳交期限">繳交期限</a></li>
+</ul>
+</li>
+<li><a href="#I-Introduction" title="I. Introduction">I. Introduction</a></li>
+<li><a href="#II-the-template-file-of-the-diatomic-module" title="II. the template file of the diatomic module">II. the template file of the diatomic module</a></li>
+<li><a href="#III-Homework" title="III. Homework">III. Homework</a><ul class="nav">
+<li><a href="#Must-Part-1" title="Must Part 1">Must Part 1</a></li>
+<li><a href="#Must-Part-2" title="Must Part 2">Must Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#VP8-Equipartition-of-energy-class-and-module" title="VP8: Equipartition of energy [class and module]">VP8: Equipartition of energy [class and module]</a><ul class="nav">
+<li><a href="#影片以及官方pdf" title="影片以及官方pdf">影片以及官方pdf</a><ul class="nav">
+<li><a href="#同學們的影片" title="同學們的影片">同學們的影片</a></li>
+</ul>
+</li>
+<li><a href="#作業繳交格式" title="作業繳交格式">作業繳交格式</a><ul class="nav">
+<li><a href="#繳交期限" title="繳交期限">繳交期限</a></li>
+</ul>
+</li>
+<li><a href="#I-Introduction" title="I. Introduction">I. Introduction</a></li>
+<li><a href="#II-the-template-file-of-the-diatomic-module" title="II. the template file of the diatomic module">II. the template file of the diatomic module</a></li>
+<li><a href="#III-Homework" title="III. Homework">III. Homework</a><ul class="nav">
+<li><a href="#Must-Part-1" title="Must Part 1">Must Part 1</a></li>
+<li><a href="#Must-Part-2" title="Must Part 2">Must Part 2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
