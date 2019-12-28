@@ -92,17 +92,17 @@ dt = <span class="hljs-number">1e-16</span>
         <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
         
 
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">collision</span><span class="hljs-params">(a1, a2)</span>:</span>
-        v1prime = a1.v - <span class="hljs-number">2</span> * a2.m/(a1.m+a2.m) *(a1.pos-a2.pos) * dot (a1.v-a2.v, a1.pos-a2.pos) / mag(a1.pos-a2.pos)**<span class="hljs-number">2</span>
-        v2prime = a2.v - <span class="hljs-number">2</span> * a1.m/(a1.m+a2.m) *(a2.pos-a1.pos) * dot (a2.v-a1.v, a2.pos-a1.pos) / mag(a2.pos-a1.pos)**<span class="hljs-number">2</span>
-        <span class="hljs-keyword">return</span> v1prime, v2prime
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">collision</span><span class="hljs-params">(a1, a2)</span>:</span>
+    v1prime = a1.v - <span class="hljs-number">2</span> * a2.m/(a1.m+a2.m) *(a1.pos-a2.pos) * dot (a1.v-a2.v, a1.pos-a2.pos) / mag(a1.pos-a2.pos)**<span class="hljs-number">2</span>
+    v2prime = a2.v - <span class="hljs-number">2</span> * a1.m/(a1.m+a2.m) *(a2.pos-a1.pos) * dot (a2.v-a1.v, a2.pos-a1.pos) / mag(a2.pos-a1.pos)**<span class="hljs-number">2</span>
+    <span class="hljs-keyword">return</span> v1prime, v2prime
          
-    <span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
-        a = CO_molecule(pos=vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), axis = vector(<span class="hljs-number">2.6</span>*size, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>))
-        a.O.v = vector(<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0</span>)
-        a.C.v = vector(<span class="hljs-number">2.0</span>, <span class="hljs-number">-1.0</span>, <span class="hljs-number">0</span>)
-        a.time_lapse(dt)
-        print(a.bond_force_on_O(), a.com(), a.com_v(), a.v_P(), a.v_K(), a.r_K(), a.com_K())
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    a = CO_molecule(pos=vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), axis = vector(<span class="hljs-number">2.6</span>*size, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>))
+    a.O.v = vector(<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0</span>)
+    a.C.v = vector(<span class="hljs-number">2.0</span>, <span class="hljs-number">-1.0</span>, <span class="hljs-number">0</span>)
+    a.time_lapse(dt)
+    print(a.bond_force_on_O(), a.com(), a.com_v(), a.v_P(), a.v_K(), a.r_K(), a.com_K())
 
 </code></pre><p>Here, some usage of python syntax new to you is explained in the following <code>class CO_molecule:</code></p><p>We declare a class called <code>CO_molecule</code>, which does not inherit from any previous known class, thus no parentheses behind it. For a new class, usually the first method is <code>__init__(self, ....)</code>, before and behind init are double underlines.</p><pre><code class="python hljs"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, pos, axis)</span>:</span> 
     self.O = sphere(pos=pos, radius=size, color=color.red)
@@ -129,8 +129,14 @@ dt = <span class="hljs-number">1e-16</span>
     a.O.v = vector(<span class="hljs-number">1.0</span>, <span class="hljs-number">1.0</span>, <span class="hljs-number">0</span>)
     a.C.v = vector(<span class="hljs-number">2.0</span>, <span class="hljs-number">-1.0</span>, <span class="hljs-number">0</span>)
     a.time_lapse(dt)
-    print(a.bond_force_on_O(), a.com(), a.com_v(), a.v_P(), a.v_K(), a.r_K(), a.com_K())
-</code></pre><p>This will generate <code>a</code>, an object from class <code>CO_molecule</code>, with the given <code>pos</code> and <code>axis</code>. It will then assign the velocities for <code>a</code>'s two atoms O and C. It then runs <code>a.time_lapse(dt)</code> to let <code>a</code> to proceed a short time <code>dt</code>. Then, if your codes are correctly written, you will have the following printed results:</p><pre><code>&lt;5.76609e-08, -1.43079e-13, 0&gt; &lt;3.4543e-11, 1.42857e-17, 0&gt; &lt;1.42857, 0.142857, 0&gt; 8.937585694598954e-20 1.4028593914919891e-24 2.2857114754936572e-23 4.8095238095238086e-23
+    print(a.bond_force_on_O(), a.com(), a.com_v(), a.v_P(), a.v_K(), a.r_K(), a.com_K(), sep='\n')
+</code></pre><p>This will generate <code>a</code>, an object from class <code>CO_molecule</code>, with the given <code>pos</code> and <code>axis</code>. It will then assign the velocities for <code>a</code>'s two atoms O and C. It then runs <code>a.time_lapse(dt)</code> to let <code>a</code> to proceed a short time <code>dt</code>. Then, if your codes are correctly written, you will have the following printed results:</p><pre><code>&lt;5.76609e-08, -1.43079e-13, 0&gt;
+&lt;3.4543e-11, 1.42857e-17, 0&gt;
+&lt;1.42857, 0.142857, 0&gt;
+8.937585694598954e-20
+1.4028593914919891e-24
+2.2857114754936572e-23
+4.8095238095238086e-23
 </code></pre><h3 id="Must-Part-2"><a class="anchor hidden-xs" href="#Must-Part-2" title="Must-Part-2"><span class="octicon octicon-link"></span></a>Must Part 2</h3><p>the template file of the main program <code>must.py</code></p><pre><code class="python hljs"><span class="hljs-keyword">from</span> vpython <span class="hljs-keyword">import</span> * 
 <span class="hljs-keyword">from</span> diatomic <span class="hljs-keyword">import</span> *
 
