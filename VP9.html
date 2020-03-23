@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="mobile-web-app-capable" content="yes">
+    <title>
+        VP9: Spring-Ball Wave and Dispersion of 1D phonon [numpy array]
+    </title>
+    <link rel="icon" type="image/png" href="https://hackmd.io/favicon.png">
+    <link rel="apple-touch-icon" href="https://hackmd.io/apple-touch-icon.png">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" integrity="sha256-3iu9jgsy9TpTwXKb7bNQzqWekRX7pPK+2OLj3R922fo=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/3.5.0/octicons.min.css" integrity="sha256-QiWfLIsCT02Sdwkogf6YMiQlj4NE84MKkzEMkZnMGdg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism.min.css" integrity="sha256-vtR0hSWRc3Tb26iuN2oZHt3KRUomwTufNIf5/4oeCyg=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/emojify.js/1.1.0/css/basic/emojify.min.css" integrity="sha256-UOrvMOsSDSrW6szVLe8ZDZezBxh5IoIfgTwdNDgTjiU=" crossorigin="anonymous" />
+    <style>
+        @charset "UTF-8";@import url(https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i|Source+Code+Pro:300,400,500|Source+Sans+Pro:300,300i,400,400i,600,600i|Source+Serif+Pro&subset=latin-ext);.hljs{display:block;background:#fff;padding:.5em;color:#333;overflow-x:auto}.hljs-comment,.hljs-meta{color:#969896}.hljs-emphasis,.hljs-quote,.hljs-string,.hljs-strong,.hljs-template-variable,.hljs-variable{color:#df5000}.hljs-keyword,.hljs-selector-tag,.hljs-type{color:#a71d5d}.hljs-attribute,.hljs-bullet,.hljs-literal,.hljs-number,.hljs-symbol{color:#0086b3}.hljs-built_in,.hljs-builtin-name{color:#005cc5}.hljs-name,.hljs-section{color:#63a35c}.hljs-tag{color:#333}.hljs-attr,.hljs-selector-attr,.hljs-selector-class,.hljs-selector-id,.hljs-selector-pseudo,.hljs-title{color:#795da3}.hljs-addition{color:#55a532;background-color:#eaffea}.hljs-deletion{color:#bd2c00;background-color:#ffecec}.hljs-link{text-decoration:underline}.markdown-body{font-size:16px;line-height:1.5;word-wrap:break-word}.markdown-body:after,.markdown-body:before{display:table;content:""}.markdown-body:after{clear:both}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body .absent{color:#c00}.markdown-body .anchor{float:left;padding-right:4px;margin-left:-20px;line-height:1}.markdown-body .anchor:focus{outline:none}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body hr{height:.25em;padding:0;margin:24px 0;background-color:#e7e7e7;border:0}.markdown-body blockquote{font-size:16px;padding:0 1em;color:#777;border-left:.25em solid #ddd}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body kbd,.popover kbd{display:inline-block;padding:3px 5px;font-size:11px;line-height:10px;color:#555;vertical-align:middle;background-color:#fcfcfc;border:1px solid #ccc;border-bottom-color:#bbb;border-radius:3px;box-shadow:inset 0 -1px 0 #bbb}.markdown-body .loweralpha{list-style-type:lower-alpha}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1 .octicon-link,.markdown-body h2 .octicon-link,.markdown-body h3 .octicon-link,.markdown-body h4 .octicon-link,.markdown-body h5 .octicon-link,.markdown-body h6 .octicon-link{color:#000;vertical-align:middle;visibility:hidden}.markdown-body h1:hover .anchor,.markdown-body h2:hover .anchor,.markdown-body h3:hover .anchor,.markdown-body h4:hover .anchor,.markdown-body h5:hover .anchor,.markdown-body h6:hover .anchor{text-decoration:none}.markdown-body h1:hover .anchor .octicon-link,.markdown-body h2:hover .anchor .octicon-link,.markdown-body h3:hover .anchor .octicon-link,.markdown-body h4:hover .anchor .octicon-link,.markdown-body h5:hover .anchor .octicon-link,.markdown-body h6:hover .anchor .octicon-link{visibility:visible}.markdown-body h1 code,.markdown-body h1 tt,.markdown-body h2 code,.markdown-body h2 tt,.markdown-body h3 code,.markdown-body h3 tt,.markdown-body h4 code,.markdown-body h4 tt,.markdown-body h5 code,.markdown-body h5 tt,.markdown-body h6 code,.markdown-body h6 tt{font-size:inherit}.markdown-body h1{font-size:2em}.markdown-body h1,.markdown-body h2{padding-bottom:.3em;border-bottom:1px solid #eee}.markdown-body h2{font-size:1.5em}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#777}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol.no-list,.markdown-body ul.no-list{padding:0;list-style-type:none}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body li>p{margin-top:16px}.markdown-body li+li{padding-top:.25em}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body table{display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}.markdown-body table th{font-weight:700}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #ddd}.markdown-body table tr{background-color:#fff;border-top:1px solid #ccc}.markdown-body table tr:nth-child(2n){background-color:#f8f8f8}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body img[align=right]{padding-left:20px}.markdown-body img[align=left]{padding-right:20px}.markdown-body .emoji{max-width:none;vertical-align:text-top;background-color:transparent}.markdown-body span.frame{display:block;overflow:hidden}.markdown-body span.frame>span{display:block;float:left;width:auto;padding:7px;margin:13px 0 0;overflow:hidden;border:1px solid #ddd}.markdown-body span.frame span img{display:block;float:left}.markdown-body span.frame span span{display:block;padding:5px 0 0;clear:both;color:#333}.markdown-body span.align-center{display:block;overflow:hidden;clear:both}.markdown-body span.align-center>span{display:block;margin:13px auto 0;overflow:hidden;text-align:center}.markdown-body span.align-center span img{margin:0 auto;text-align:center}.markdown-body span.align-right{display:block;overflow:hidden;clear:both}.markdown-body span.align-right>span{display:block;margin:13px 0 0;overflow:hidden;text-align:right}.markdown-body span.align-right span img{margin:0;text-align:right}.markdown-body span.float-left{display:block;float:left;margin-right:13px;overflow:hidden}.markdown-body span.float-left span{margin:13px 0 0}.markdown-body span.float-right{display:block;float:right;margin-left:13px;overflow:hidden}.markdown-body span.float-right>span{display:block;margin:13px auto 0;overflow:hidden;text-align:right}.markdown-body code,.markdown-body tt{padding:0;padding-top:.2em;padding-bottom:.2em;margin:0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}.markdown-body code:after,.markdown-body code:before,.markdown-body tt:after,.markdown-body tt:before{letter-spacing:-.2em;content:"\00a0"}.markdown-body code br,.markdown-body tt br{display:none}.markdown-body del code{text-decoration:inherit}.markdown-body pre{word-wrap:normal}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:transparent;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f7f7f7;border-radius:3px}.markdown-body pre code,.markdown-body pre tt{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code:after,.markdown-body pre code:before,.markdown-body pre tt:after,.markdown-body pre tt:before{content:normal}.markdown-body .csv-data td,.markdown-body .csv-data th{padding:5px;overflow:hidden;font-size:12px;line-height:1;text-align:left;white-space:nowrap}.markdown-body .csv-data .blob-line-num{padding:10px 8px 9px;text-align:right;background:#fff;border:0}.markdown-body .csv-data tr{border-top:0}.markdown-body .csv-data th{font-weight:700;background:#f8f8f8;border-top:0}.news .alert .markdown-body blockquote{padding:0 0 0 40px;border:0 none}.activity-tab .news .alert .commits,.activity-tab .news .markdown-body blockquote{padding-left:0}.task-list-item{list-style-type:none}.task-list-item label{font-weight:400}.task-list-item.enabled label{cursor:pointer}.task-list-item+.task-list-item{margin-top:3px}.task-list-item-checkbox{float:left;margin:.31em 0 .2em -1.3em!important;vertical-align:middle;cursor:default!important}.markdown-body{padding-top:40px;padding-bottom:40px;max-width:758px;overflow:visible!important}.markdown-body .emoji{vertical-align:top}.markdown-body pre{border:inherit!important}.markdown-body code{color:inherit!important}.markdown-body pre code .wrapper{display:-moz-inline-flex;display:-ms-inline-flex;display:-o-inline-flex;display:inline-flex}.markdown-body pre code .gutter{float:left;overflow:hidden;-webkit-user-select:none;user-select:none}.markdown-body pre code .gutter.linenumber{text-align:right;position:relative;display:inline-block;cursor:default;z-index:4;padding:0 8px 0 0;min-width:20px;box-sizing:content-box;color:#afafaf!important;border-right:3px solid #6ce26c!important}.markdown-body pre code .gutter.linenumber>span:before{content:attr(data-linenumber)}.markdown-body pre code .code{float:left;margin:0 0 0 16px}.markdown-body .gist .line-numbers{border-left:none;border-top:none;border-bottom:none}.markdown-body .gist .line-data{border:none}.markdown-body .gist table{border-spacing:0;border-collapse:inherit!important}.markdown-body code[data-gist-id]{background:none;padding:0}.markdown-body code[data-gist-id]:after,.markdown-body code[data-gist-id]:before{content:""}.markdown-body code[data-gist-id] .blob-num{border:unset}.markdown-body code[data-gist-id] table{overflow:unset;margin-bottom:unset}.markdown-body code[data-gist-id] table tr{background:unset}.markdown-body[dir=rtl] pre{direction:ltr}.markdown-body[dir=rtl] code{direction:ltr;unicode-bidi:embed}.markdown-body .alert>p{margin-bottom:0}.markdown-body pre.abc,.markdown-body pre.flow-chart,.markdown-body pre.graphviz,.markdown-body pre.mermaid,.markdown-body pre.sequence-diagram{text-align:center;background-color:inherit;border-radius:0;white-space:inherit}.markdown-body pre.abc>code,.markdown-body pre.flow-chart>code,.markdown-body pre.graphviz>code,.markdown-body pre.mermaid>code,.markdown-body pre.sequence-diagram>code{text-align:left}.markdown-body pre.abc>svg,.markdown-body pre.flow-chart>svg,.markdown-body pre.graphviz>svg,.markdown-body pre.mermaid>svg,.markdown-body pre.sequence-diagram>svg{max-width:100%;height:100%}.markdown-body pre>code.wrap{white-space:pre-wrap;white-space:-moz-pre-wrap;white-space:-pre-wrap;white-space:-o-pre-wrap;word-wrap:break-word}.markdown-body .alert>p,.markdown-body .alert>ul{margin-bottom:0}.markdown-body summary{display:list-item}.markdown-body summary:focus{outline:none}.markdown-body details summary{cursor:pointer}.markdown-body details:not([open])>:not(summary){display:none}.markdown-body figure{margin:1em 40px}.markdown-body .mark,.markdown-body mark{background-color:#fff1a7}.vimeo,.youtube{cursor:pointer;display:table;text-align:center;background-position:50%;background-repeat:no-repeat;background-size:contain;background-color:#000;overflow:hidden}.vimeo,.youtube{position:relative;width:100%}.youtube{padding-bottom:56.25%}.vimeo img{width:100%;object-fit:contain;z-index:0}.youtube img{object-fit:cover;z-index:0}.vimeo iframe,.youtube iframe,.youtube img{width:100%;height:100%;position:absolute;top:0;left:0}.vimeo iframe,.youtube iframe{vertical-align:middle;z-index:1}.vimeo .icon,.youtube .icon{position:absolute;height:auto;width:auto;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;opacity:.3;transition:opacity .2s;z-index:0}.vimeo:hover .icon,.youtube:hover .icon{opacity:.6;transition:opacity .2s}.slideshare .inner,.speakerdeck .inner{position:relative;width:100%}.slideshare .inner iframe,.speakerdeck .inner iframe{position:absolute;top:0;bottom:0;left:0;right:0;width:100%;height:100%}.MJX_Assistive_MathML{display:none}.ui-infobar{position:relative;z-index:2;max-width:760px;margin:25px auto -25px;padding:0 15px;color:#777}.toc .invisable-node{list-style-type:none}.ui-toc{position:fixed;bottom:20px;z-index:998}.ui-toc-label{opacity:.3;background-color:#ccc;border:none;transition:opacity .2s}.ui-toc .open .ui-toc-label{opacity:1;color:#fff;transition:opacity .2s}.ui-toc-label:focus{opacity:.3;background-color:#ccc;color:#000}.ui-toc-label:hover{opacity:1;background-color:#ccc;transition:opacity .2s}.ui-toc-dropdown{margin-top:23px;margin-bottom:20px;padding-left:10px;padding-right:10px;max-width:45vw;width:25vw;max-height:70vh;overflow:auto;text-align:inherit}.ui-toc-dropdown>.toc{max-height:calc(70vh - 100px);overflow:auto}.ui-toc-dropdown[dir=rtl] .nav{padding-right:0;letter-spacing:.0029em}.ui-toc-dropdown a{overflow:hidden;text-overflow:ellipsis;white-space:pre}.ui-toc-dropdown .nav>li>a{display:block;padding:4px 20px;font-size:13px;font-weight:500;color:#767676}.ui-toc-dropdown .nav>li:first-child:last-child > ul,.ui-toc-dropdown .toc.expand ul{display:block}.ui-toc-dropdown .nav>li>a:focus,.ui-toc-dropdown .nav>li>a:hover{padding-left:19px;color:#000;text-decoration:none;background-color:transparent;border-left:1px solid #000}.ui-toc-dropdown[dir=rtl] .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav>li>a:hover{padding-right:19px;border-left:none;border-right:1px solid #000}.ui-toc-dropdown .nav>.active:focus>a,.ui-toc-dropdown .nav>.active:hover>a,.ui-toc-dropdown .nav>.active>a{padding-left:18px;font-weight:700;color:#000;background-color:transparent;border-left:2px solid #000}.ui-toc-dropdown[dir=rtl] .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav>.active>a{padding-right:18px;border-left:none;border-right:2px solid #000}.ui-toc-dropdown .nav .nav{display:none;padding-bottom:10px}.ui-toc-dropdown .nav>.active>ul{display:block}.ui-toc-dropdown .nav .nav>li>a{padding-top:1px;padding-bottom:1px;padding-left:30px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a{padding-right:30px}.ui-toc-dropdown .nav .nav>li>ul>li>a{padding-top:1px;padding-bottom:1px;padding-left:40px;font-size:12px;font-weight:400}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a{padding-right:40px}.ui-toc-dropdown .nav .nav>li>a:focus,.ui-toc-dropdown .nav .nav>li>a:hover{padding-left:29px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>a:hover{padding-right:29px}.ui-toc-dropdown .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown .nav .nav>li>ul>li>a:hover{padding-left:39px}.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:focus,.ui-toc-dropdown[dir=rtl] .nav .nav>li>ul>li>a:hover{padding-right:39px}.ui-toc-dropdown .nav .nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>a{padding-left:28px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>a{padding-right:28px}.ui-toc-dropdown .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown .nav .nav>.active>.nav>.active>a{padding-left:38px;font-weight:500}.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:focus>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active:hover>a,.ui-toc-dropdown[dir=rtl] .nav .nav>.active>.nav>.active>a{padding-right:38px}.markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,sans-serif}html[lang^=ja] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] .markdown-body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html .markdown-body[lang^=ja]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html .markdown-body[lang=zh-tw]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html .markdown-body[lang=zh-cn]{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica Neue,Helvetica,Roboto,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}html[lang^=ja] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html[lang=zh-tw] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html[lang=zh-cn] .ui-toc-dropdown{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}html .ui-toc-dropdown[lang^=ja]{font-family:Source Sans Pro,Helvetica,Arial,Meiryo UI,MS PGothic,ＭＳ\ Ｐゴシック,sans-serif}html .ui-toc-dropdown[lang=zh-tw]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft JhengHei UI,微軟正黑UI,sans-serif}html .ui-toc-dropdown[lang=zh-cn]{font-family:Source Sans Pro,Helvetica,Arial,Microsoft YaHei UI,微软雅黑UI,sans-serif}.ui-affix-toc{position:fixed;top:0;max-width:15vw;max-height:70vh;overflow:auto}.back-to-top,.expand-toggle,.go-to-bottom{display:block;padding:4px 10px;margin-top:10px;margin-left:10px;font-size:12px;font-weight:500;color:#999}.back-to-top:focus,.back-to-top:hover,.expand-toggle:focus,.expand-toggle:hover,.go-to-bottom:focus,.go-to-bottom:hover{color:#563d7c;text-decoration:none}.back-to-top,.go-to-bottom{margin-top:0}.ui-user-icon{width:20px;height:20px;display:block;border-radius:3px;margin-top:2px;margin-bottom:2px;margin-right:5px;background-position:50%;background-repeat:no-repeat;background-size:cover}.ui-user-icon.small{width:18px;height:18px;display:inline-block;vertical-align:middle;margin:0 0 .2em}.ui-infobar>small>span{line-height:22px}.ui-infobar>small .dropdown{display:inline-block}.ui-infobar>small .dropdown a:focus,.ui-infobar>small .dropdown a:hover{text-decoration:none}.ui-published-note{color:#337ab7}.ui-published-note .fa{font-size:20px;vertical-align:top}.unselectable{-webkit-user-select:none;-o-user-select:none;user-select:none}@media print{blockquote,div,img,pre,table{page-break-inside:avoid!important}a[href]:after{font-size:12px!important}}.markdown-body.slides{position:relative;z-index:1;color:#222}.markdown-body.slides:before{content:"";display:block;position:absolute;top:0;left:0;right:0;bottom:0;z-index:-1;background-color:currentColor;box-shadow:0 0 0 50vw}.markdown-body.slides section[data-markdown]{position:relative;margin-bottom:1.5em;background-color:#fff;text-align:center}.markdown-body.slides section[data-markdown] code{text-align:left}.markdown-body.slides section[data-markdown]:before{content:"";display:block;padding-bottom:56.23%}.markdown-body.slides section[data-markdown]>div:first-child{position:absolute;top:50%;left:1em;right:1em;transform:translateY(-50%);max-height:100%;overflow:hidden}.markdown-body.slides section[data-markdown]>ul{display:inline-block}.markdown-body.slides>section>section+section:after{content:"";position:absolute;top:-1.5em;right:1em;height:1.5em;border:3px solid #777}body{font-smoothing:subpixel-antialiased!important;-webkit-font-smoothing:subpixel-antialiased!important;-moz-osx-font-smoothing:auto!important;text-shadow:0 0 1em transparent,1px 1px 1.2px rgba(0,0,0,.004);-webkit-overflow-scrolling:touch;letter-spacing:.025em}.focus,:focus{outline:none!important}::-moz-focus-inner{border:0!important}body{font-family:Source Sans Pro,Helvetica,Arial,sans-serif}html[lang^=ja] body{font-family:Source Sans Pro,Helvetica,Arial,Hiragino Kaku Gothic Pro,ヒラギノ角ゴ Pro W3,Osaka,Meiryo,メイリオ,MS Gothic,ＭＳ\ ゴシック,sans-serif}html[lang=zh-tw] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang TC,Microsoft JhengHei,微軟正黑,sans-serif}html[lang=zh-cn] body{font-family:Source Sans Pro,Helvetica,Arial,PingFang SC,Microsoft YaHei,微软雅黑,sans-serif}abbr[title]{border-bottom:none;text-decoration:underline;-webkit-text-decoration:underline dotted;text-decoration:underline dotted}abbr[data-original-title],abbr[title]{cursor:help}body.modal-open{overflow-y:auto;padding-right:0!important}
+    </style>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" integrity="sha256-3Jy/GbSLrg0o9y5Z5n1uw0qxZECH7C6OQpVBgNFYa0g=" crossorigin="anonymous"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js" integrity="sha256-g6iAfvZp+nDQ2TdTR/VVKJf3bGro4ub5fvWSWVRi2NE=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es5-shim/4.5.9/es5-shim.min.js" integrity="sha256-8E4Is26QH0bD52WoQpcB+R/tcWQtpzlCojrybUd7Mxo=" crossorigin="anonymous"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div id="doc" class="markdown-body container-fluid comment-enabled" data-hard-breaks="true" style="position: relative;"><h1 id="VP9-Spring-Ball-Wave-and-Dispersion-of-1D-phonon-numpy-array"><a class="anchor hidden-xs" href="#VP9-Spring-Ball-Wave-and-Dispersion-of-1D-phonon-numpy-array" title="VP9-Spring-Ball-Wave-and-Dispersion-of-1D-phonon-numpy-array"><span class="octicon octicon-link"></span></a>VP9: Spring-Ball Wave and Dispersion of 1D phonon [numpy array]</h1><p>這份作業說明的長度本來就很長（我還貢獻了一點…），還補充說明了之前跳過的 VP7 提到的 <code>numpy</code> 這個工具，所以大家有空就盡早完成它吧。</p><h2 id="影片以及官方PDF"><a class="anchor hidden-xs" href="#影片以及官方PDF" title="影片以及官方PDF"><span class="octicon octicon-link"></span></a>影片以及官方PDF</h2><ul>
+<li><a href="https://goo.gl/fYz6QZ" target="_blank" rel="noopener">影片</a></li>
+<li><a href="pdf/VP9.pdf" target="_blank" rel="noopener">官方PDF</a></li>
+</ul><h3 id="同學們的影片"><a class="anchor hidden-xs" href="#同學們的影片" title="同學們的影片"><span class="octicon octicon-link"></span></a>同學們的影片</h3><ul>
+<li><a href="" target="_blank" rel="noopener">這部份當然是還沒有啦</a></li>
+</ul><h2 id="作業繳交格式"><a class="anchor hidden-xs" href="#作業繳交格式" title="作業繳交格式"><span class="octicon octicon-link"></span></a>作業繳交格式</h2><p>請上傳一個 zip 檔（壓縮檔，請注意副檔名要是 <code>zip</code>）到 CEIBA，zip 檔內需要包含一個<strong>名稱是自己學號的資料夾</strong>，裡面包含兩個 py 檔。請將必作部份取名為 <code>must.py</code>，另一個檔案則是 <code>histogram.py</code>，後面會有關於這個檔案的說明。若本次作業有拍攝說明影片，請<strong>將影片連結寫在</strong> <code>video.txt</code> <strong>裡面，並一併放入學號資料夾中</strong>。</p><p>範例：（zip 檔名可以隨便取，CEIBA 系統會自己把檔名改掉）</p><pre><code>minnaganbare.zip
+└── r07222060
+    ├── must.py
+    ├── histogram.py
+    └── video.txt
+</code></pre><blockquote>
+<h4 id="助教註"><a class="anchor hidden-xs" href="#助教註" title="助教註"><span class="octicon octicon-link"></span></a>助教註:</h4>
+<p>如果你是用 JuPyter notebook 寫的，請記得將你的程式用 <code>.py</code> 格式下載下來，不要給我 <code>.ipynb</code> 或甚至 <code>.html</code>。</p>
+</blockquote><h3 id="繳交期限"><a class="anchor hidden-xs" href="#繳交期限" title="繳交期限"><span class="octicon octicon-link"></span></a>繳交期限</h3><p><code>2019/01/12 SUN 21:00</code></p><h2 id="I-Callback-and-Keyboard-Control"><a class="anchor hidden-xs" href="#I-Callback-and-Keyboard-Control" title="I-Callback-and-Keyboard-Control"><span class="octicon octicon-link"></span></a>I. Callback and Keyboard Control</h2><p>In some programs, e.g. games, you use mice or keyboards to control things but at the same time, the programs continue running. An interrupt callback function can help you do this kind of work. The following example shows how to use arrow keys and letter keys (‘i’, ‘o’, ‘r’, ‘c’) to control the earth’s position and rotation axis while the earth continues spinning. However, <strong>in Jupyter this will not work</strong> since Jupyter console has a higher priority accessing to the keyboard than your vpython program. As a result, your program will not know if a keyboard is pressed or not. You can use the method marked as ##(for JUPYTER also for VIDLE).</p><h3 id="Code-for-ones-not-using-Jupyter"><a class="anchor hidden-xs" href="#Code-for-ones-not-using-Jupyter" title="Code-for-ones-not-using-Jupyter"><span class="octicon octicon-link"></span></a>Code for ones not using Jupyter</h3><img src="pic/VP9/keyboard.png" class="center" height="400"><pre><code class="python hljs"><span class="hljs-keyword">from</span> vpython <span class="hljs-keyword">import</span> *
+
+pos, angle = vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-number">0</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">keyinput</span><span class="hljs-params">(evt)</span>:</span> <span class="hljs-comment">#keyboard callback function</span>
+    <span class="hljs-keyword">global</span> pos, angle
+    move = {<span class="hljs-string">'left'</span>: vector(<span class="hljs-number">-0.1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-string">'right'</span>: vector(<span class="hljs-number">0.1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>),
+            <span class="hljs-string">'up'</span>: vector(<span class="hljs-number">0</span>, <span class="hljs-number">0.1</span>, <span class="hljs-number">0</span>), <span class="hljs-string">'down'</span>: vector(<span class="hljs-number">0</span>, <span class="hljs-number">-0.1</span>, <span class="hljs-number">0</span>),
+            <span class="hljs-string">'i'</span> : vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">-0.1</span>), <span class="hljs-string">'o'</span>: vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.1</span>)}
+    roa =  {<span class="hljs-string">'c'</span> : pi / <span class="hljs-number">90.0</span> , <span class="hljs-string">'r'</span>: - pi / <span class="hljs-number">90.0</span>}
+    s = evt.key
+    
+    <span class="hljs-keyword">if</span> s <span class="hljs-keyword">in</span> move:
+        pos = pos + move[s]
+    <span class="hljs-keyword">if</span> s <span class="hljs-keyword">in</span> roa:
+        ball.rotate(angle=roa[s], axis=vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">1</span>), origin=ball.pos)
+        angle = angle - roa[s]
+
+scene = canvas(width=<span class="hljs-number">800</span>, height=<span class="hljs-number">800</span>, range=<span class="hljs-number">5</span>, background=color.white)
+ball = sphere(radius=<span class="hljs-number">2.0</span>, texture=textures.earth )
+scene.bind(<span class="hljs-string">'keydown'</span>, keyinput)  <span class="hljs-comment"># setting for the binding function</span>
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+    rate(<span class="hljs-number">1000</span>)
+    ball.rotate(angle=pi/<span class="hljs-number">600</span>, axis=vector(sin(angle), cos(angle) ,<span class="hljs-number">0</span>), origin=pos)
+    ball.pos = pos
+</code></pre><p>In <code>def keyinput(evt)</code>, which is the interrupt callback function, <code>global</code> declares the variables (<code>pos</code>, <code>angle</code>) to be global variables, meaning their values will be known to the entire program (exceeding the scope of this function).</p><p><code>s = evt.key</code> gets the key that is pressed. Then you can decide what to do with <code>s</code>. For example, <code>ball.rotate(angle=roa[s], axis=vector(0, 0, 1), origin=ball.pos)</code> will rotate <code>ball</code> with an <code>angle</code>, around <code>axis</code> that passes through <code>origin</code>. Any vpython drawn object, such as <code>sphere</code> or <code>box</code>, can be rotated by this <code>rotate</code> method.</p><p>In the main program, command <code>scene.bind('keydown', keyinput)</code> binds <code>keyinput</code> with <code>scene</code>. When your active window is <code>scene</code> and the event <code>'keydown'</code> (here, a key of the keyboard is pressed) happens, no matter at which part of the program it is now being executed, the bound function, <code>keyinput()</code>, will interrupt and be executed right away. After the bound function has finished, the program will go back to the program where it has left just before the interrupt event has happened.</p><ul>
+<li>More information about keyboard operation can be found at<br>
+<a href="http://www.glowscript.org/docs/VPythonDocs/keyboard.html" target="_blank" rel="noopener">http://www.glowscript.org/docs/VPythonDocs/keyboard.html</a>.</li>
+<li>Similar working principle applies to mouse. You can also find mouse operation at<br>
+<a href="http://www.glowscript.org/docs/VPythonDocs/mouse.html" target="_blank" rel="noopener">http://www.glowscript.org/docs/VPythonDocs/mouse.html</a>.</li>
+</ul><h3 id="Code-for-Jupyter-also-available-for-other-environments"><a class="anchor hidden-xs" href="#Code-for-Jupyter-also-available-for-other-environments" title="Code-for-Jupyter-also-available-for-other-environments"><span class="octicon octicon-link"></span></a>Code for Jupyter (also available for other environments)</h3><img src="pic/VP9/button.png" height="400"><pre><code class="python hljs"><span class="hljs-keyword">from</span> vpython <span class="hljs-keyword">import</span> *
+
+pos, angle = vector(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>), <span class="hljs-number">0</span>
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">right</span><span class="hljs-params">(b)</span>:</span>    <span class="hljs-comment">#callback function</span>
+    <span class="hljs-keyword">global</span> pos, angle
+    pos = pos + vector(<span class="hljs-number">0.1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">left</span><span class="hljs-params">(b)</span>:</span>
+    <span class="hljs-keyword">global</span> pos, angle
+    pos = pos + vector(<span class="hljs-number">-0.1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+
+scene = canvas(width=<span class="hljs-number">400</span>, height=<span class="hljs-number">400</span>, range=<span class="hljs-number">5</span>, background=color.white)
+ball = sphere(radius=<span class="hljs-number">2.0</span>, texture=textures.earth )
+button(text=<span class="hljs-string">'right'</span>, pos=scene.title_anchor, bind=right)
+button(text=<span class="hljs-string">'left'</span>, pos=scene.title_anchor, bind=left)
+
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+    rate(<span class="hljs-number">1000</span>)
+    ball.rotate(angle=pi/<span class="hljs-number">600</span>, axis=vector(sin(angle), cos(angle), <span class="hljs-number">0</span>), origin=pos)
+    ball.pos = pos
+</code></pre><p>In <code>def right(b)</code>, which is the interrupt callback function, <code>global</code> declares the variables <code>pos</code> and <code>angle</code> to be global variables, meaning their values will be known to the entire program (exceeding the scope of this function). When this function is executed, <code>pos</code> is added by <code>vector(0.1, 0, 0)</code>. The same is applied similarly to <code>def left(b)</code>. You can write similar functions to control the <code>pos</code> or the <code>angle</code>.</p><p>In the main program, command <code>button(text='right', pos=scene.title_anchor, bind=right)</code> creates a button with <code>text='right'</code> with the button’s position set by <code>pos=scene.title_anchor</code>. The most importantly, this button is bound to function <code>right</code> by <code>bind=right</code>, meaning that if this button is clicked, the bound function will be executed no matter at which part of the program it is now being executed, the bound function, <code>right()</code>, will interrupt and be executed right away. After the bound function has finished, the program will go back to the program where it has left just before the interrupt event has happened.</p><p>In the main loop <code>ball.rotate(angle=pi/600, axis=vector(sin(angle), cos(angle), 0), origin=pos)</code> will rotate <code>ball</code> with an <code>angle</code>, around <code>axis</code> that passes through <code>origin</code>. Any vpython drawn object, such as <code>sphere</code> or <code>box</code>, can be rotated by this <code>rotate</code> method.</p><ul>
+<li>More information about buttons and other similar features can be found at<br>
+<a href="http://www.glowscript.org/docs/VPythonDocs/controls.html" target="_blank" rel="noopener">http://www.glowscript.org/docs/VPythonDocs/controls.html</a></li>
+</ul><h2 id="II-Histogram-Module"><a class="anchor hidden-xs" href="#II-Histogram-Module" title="II-Histogram-Module"><span class="octicon octicon-link"></span></a>II. Histogram Module</h2><img src="pic/VP9/histogram.png" height="300"><h3 id="Do-save-these-codes-as-histogrampy-in-your-homework-folder"><a class="anchor hidden-xs" href="#Do-save-these-codes-as-histogrampy-in-your-homework-folder" title="Do-save-these-codes-as-histogrampy-in-your-homework-folder"><span class="octicon octicon-link"></span></a>Do save these codes as <code>histogram.py</code> in your homework folder</h3><pre><code class="python hljs"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">import</span> vpython <span class="hljs-keyword">as</span> vp
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ghistogram</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, graph, bins, color=vp.color.red)</span>:</span>
+        self.bins = bins
+        self.slotnumber = len(bins)
+        self.slotwidth = bins[<span class="hljs-number">1</span>] - bins[<span class="hljs-number">0</span>]
+        self.n = <span class="hljs-number">0</span>
+        self.slots = np.zeros(len(bins))
+        self.bars = vp.gvbars(graph=graph, delta=self.slotwidth, color=color)
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">plot</span><span class="hljs-params">(self, data)</span>:</span>
+        currentslots = np.zeros(self.slotnumber)
+        <span class="hljs-keyword">for</span> value <span class="hljs-keyword">in</span> data:
+            currentslots[min(max(int((value - self.bins[<span class="hljs-number">0</span>])/self.slotwidth), <span class="hljs-number">0</span>), self.slotnumber<span class="hljs-number">-1</span>)] += <span class="hljs-number">1</span>
+
+        self.slots = (self.slots * self.n + currentslots)/(self.n + <span class="hljs-number">1</span>)
+        self.n += <span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> self.n == <span class="hljs-number">1</span>:
+            <span class="hljs-keyword">for</span> (currentbin, barlength) <span class="hljs-keyword">in</span> zip(self.bins, self.slots):
+                self.bars.plot( pos = (currentbin, barlength))
+        <span class="hljs-keyword">else</span>:
+            self.bars.data = list(zip(self.bins, self.slots))
+
+<span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">'__main__'</span>:
+    vdist = vp.graph(width=<span class="hljs-number">450</span>)
+    observation = ghistogram(graph=vdist, bins=np.arange(<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">0.5</span>))
+    observation.plot(data=[<span class="hljs-number">1.2</span>, <span class="hljs-number">2.3</span>, <span class="hljs-number">4</span>])
+    observation.plot(data=[<span class="hljs-number">1</span>, <span class="hljs-number">1.7</span>, <span class="hljs-number">2.6</span>])
+    observation.plot (data=[<span class="hljs-number">-0.5</span>, <span class="hljs-number">2</span>, <span class="hljs-number">2.3</span>])
+</code></pre><p>This module provides you the <code>ghistogram</code> class to plot the histogram for a series of data. Remember to put this file <strong><code>histogram.py</code></strong> in the same folder as your main program. If you are interested in how this class is written, you can look at the details of the program, otherwise, you just use this module to finish your homework.</p><p>Codes under <code>if __name__ == '__main__':</code> shows how to use it. You first import vpython and create a <code>graph</code> (here it is <code>vdist</code>). Then you can create an <code>ghistogram</code> object (here it is <code>observation</code>), in which it must specified in which graph it should display (<code>graph=vdist</code>), the bins (here it is 1-1.5, 1.5-2, 2-2.5, 2.5-3), and the color of the histogram. If you do not specify what color the histogram should be, it defaults to red. Then in the method <code>observation.plot</code>, you give the <code>data</code> (can be <code>list</code> or <code>array</code>), it then counts the number of occurrence of the values in <code>data</code>, averages the number of occurrence over times this method has been called and plots the latest results. If a value in data is smaller than the lower bound, it is counted as in the lowest bin, similarly, if a value is larger than the upper bound, it is counted as in the highest bin. For example, the 3 rows of data will yield the histogram in the figure.</p><h2 id="III-Template-File-for-Gas-in-a-Container"><a class="anchor hidden-xs" href="#III-Template-File-for-Gas-in-a-Container" title="III-Template-File-for-Gas-in-a-Container"><span class="octicon octicon-link"></span></a>III. Template File for Gas in a Container</h2><h3 id="Do-save-these-codes-as-VP9py-in-your-homework-folder"><a class="anchor hidden-xs" href="#Do-save-these-codes-as-VP9py-in-your-homework-folder" title="Do-save-these-codes-as-VP9py-in-your-homework-folder"><span class="octicon octicon-link"></span></a>Do save these codes as <code>must.py</code> in your homework folder</h3><blockquote>
+<h4 id="助教註1"><a class="anchor hidden-xs" href="#助教註1" title="助教註1"><span class="octicon octicon-link"></span></a>助教註:</h4>
+<h3 id="Before-you-going-on…"><a class="anchor hidden-xs" href="#Before-you-going-on…" title="Before-you-going-on…"><span class="octicon octicon-link"></span></a>Before you going on…</h3>
+<p><strong>Do read the insturctions <a href="prior_knowledge.html" target="_blank" rel="noopener">here</a>, which cover the concept introduced in VP7, or you may just feel WTF while reading the following part.</strong></p>
+<p>Here Professor put almost all the instructions in the comment. But in this html/markdown format, doing so will make the instructions harder to read, so I will devide the codes into several parts and move some long sentences out of the code comments. To execute the code, just combine these parts yourselves.</p>
+<p>Just notifying you the slight difference between this doc and Professor’s. You could also read this part in Professor’s PDF if you want.</p>
+</blockquote><p>Read the template program for simulation of a gas of 200 He atoms in a container. The most difficult part is the section commented by <code>### Find collisions between pairs of atoms, and handle their collisions</code>. If you do not understand this part, it is ok to skip it.</p><p>The entire program is written very straight forward: setting the suitable parameters, preparing for the plotting for histogram, initialization of the atoms, and the main program that includes the movements of the atoms, handling the atom-atom collisions, and the handling the atom-wall collisions. In the program, we use numpy’s array to expedite the execution.</p><h3 id="Code"><a class="anchor hidden-xs" href="#Code" title="Code"><span class="octicon octicon-link"></span></a>Code</h3><h4 id="Module-importing"><a class="anchor hidden-xs" href="#Module-importing" title="Module-importing"><span class="octicon octicon-link"></span></a>Module importing</h4><pre><code class="python hljs"><span class="hljs-keyword">from</span> vpython <span class="hljs-keyword">import</span> *
+<span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
+<span class="hljs-keyword">from</span> histogram <span class="hljs-keyword">import</span> *
+</code></pre><p>Note: The module <code>histogram</code> here is just your <code>histogram.py</code>. All the functions and classes inside it would be imported to your namespace.</p><h4 id="Parameter-setting"><a class="anchor hidden-xs" href="#Parameter-setting" title="Parameter-setting"><span class="octicon octicon-link"></span></a>Parameter setting</h4><ul>
+<li><code>size</code>: The size for He atom. It’s 10 times bigger than the real value for easier collision but not too big for accuracy.</li>
+<li><code>L</code>: 2L is the cubic container’s original length, width, and height.</li>
+<li>Others: Just see the comment.</li>
+</ul><pre><code class="python hljs"><span class="hljs-comment"># parameters</span>
+N = <span class="hljs-number">200</span>
+m, size = <span class="hljs-number">4e-3</span>/<span class="hljs-number">6e+23</span>, <span class="hljs-number">31e-12</span>*<span class="hljs-number">10</span>
+L = ((<span class="hljs-number">24.4e-3</span>/(<span class="hljs-number">6e+23</span>))*N)**(<span class="hljs-number">1</span>/<span class="hljs-number">3</span>) / <span class="hljs-number">2</span> + size
+k, T = <span class="hljs-number">1.38e-23</span>, <span class="hljs-number">298.0</span>    <span class="hljs-comment"># Boltzmann constant and initial temperature</span>
+t, dt = <span class="hljs-number">0</span>, <span class="hljs-number">3e-13</span>
+vrms = (<span class="hljs-number">2</span>*k*<span class="hljs-number">1.5</span>*T/m)**<span class="hljs-number">0.5</span> <span class="hljs-comment"># initial root mean square velocity</span>
+stage = <span class="hljs-number">0</span>                 <span class="hljs-comment"># stage number</span>
+atoms = []                <span class="hljs-comment"># list to store atoms</span>
+</code></pre><h4 id="Histogram-setting"><a class="anchor hidden-xs" href="#Histogram-setting" title="Histogram-setting"><span class="octicon octicon-link"></span></a>Histogram setting</h4><ul>
+<li><code>deltav</code>: slot width(bin width) for v histogram</li>
+<li><code>theory_low_T</code>: for plotting the curve of the theoretical atom speed distribution</li>
+</ul><pre><code class="python hljs"><span class="hljs-comment"># histogram setting</span>
+deltav = <span class="hljs-number">50.0</span>
+vdist = graph(x=<span class="hljs-number">800</span>, y=<span class="hljs-number">0</span>, ymax=N*deltav/<span class="hljs-number">1000</span>, width=<span class="hljs-number">500</span>, height=<span class="hljs-number">300</span>,
+              xtitle=<span class="hljs-string">'v'</span>, ytitle=<span class="hljs-string">'dN'</span>, align=<span class="hljs-string">'left'</span>)
+theory_low_T = gcurve(color=color.cyan)
+dv = <span class="hljs-number">10</span>
+
+<span class="hljs-comment"># Plot the theoretical speed distribution</span>
+<span class="hljs-keyword">for</span> v <span class="hljs-keyword">in</span> np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">4201</span>+dv, dv):
+    theory_low_T.plot(pos=(v, (deltav/dv)*N*<span class="hljs-number">4</span>*pi*((m/(<span class="hljs-number">2</span>*pi*k*T))**<span class="hljs-number">1.5</span>)*exp((<span class="hljs-number">-0.5</span>*m*v**<span class="hljs-number">2</span>)/(k*T))*(v**<span class="hljs-number">2</span>)*dv))
+    
+<span class="hljs-comment"># For the speed distribution in the simulation</span>
+observation = ghistogram(graph=vdist, bins=np.arange(<span class="hljs-number">0</span>, <span class="hljs-number">4200</span>, deltav), color=color.red)
+</code></pre><h4 id="Initialization"><a class="anchor hidden-xs" href="#Initialization" title="Initialization"><span class="octicon octicon-link"></span></a>Initialization</h4><ul>
+<li><code>p_a</code>, <code>v_a</code>: The position array and the velocity array of the particle, each containing 3 components for N particles.</li>
+<li><code>ra</code>, <code>rb</code>: The random numbers used to decide the direction of <code>v_a</code>. (The magnitudes, or speeds, are the same.) They are just polar angles.</li>
+</ul><p>In the beginning of the for loop, we randomly assign the position to the i-th row of <code>p_a</code>. Then we set the last (<code>i == N-1</code>) atom to be yellow and leave a trail, while the other atoms are in random color with no trail.</p><pre><code class="python hljs"><span class="hljs-comment"># initialization</span>
+scene = canvas(width=<span class="hljs-number">500</span>, height=<span class="hljs-number">500</span>, background=vector(<span class="hljs-number">0.2</span>,<span class="hljs-number">0.2</span>,<span class="hljs-number">0</span>), align=<span class="hljs-string">'left'</span>)
+container = box(length=<span class="hljs-number">2</span>*L, height=<span class="hljs-number">2</span>*L, width=<span class="hljs-number">2</span>*L, opacity=<span class="hljs-number">0.2</span>, color=color.yellow)
+p_a, v_a = np.zeros((N,<span class="hljs-number">3</span>)), np.zeros((N,<span class="hljs-number">3</span>))
+
+<span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(N):
+    p_a[i] = [<span class="hljs-number">2</span> * L*random() - L, <span class="hljs-number">2</span> * L*random() - L, <span class="hljs-number">2</span> * L*random() - L]
+    <span class="hljs-keyword">if</span> i== N<span class="hljs-number">-1</span>:
+        atom = sphere(pos=vector(p_a[i, <span class="hljs-number">0</span>], p_a[i, <span class="hljs-number">1</span>], p_a[i, <span class="hljs-number">2</span>]), radius=size, color=color.yellow, make_trail=<span class="hljs-keyword">True</span>, retain=<span class="hljs-number">50</span>)
+    <span class="hljs-keyword">else</span>:
+        atom = sphere(pos=vector(p_a[i, <span class="hljs-number">0</span>], p_a[i, <span class="hljs-number">1</span>], p_a[i, <span class="hljs-number">2</span>]), radius=size, color=vector(random(), random(), random()))
+    
+    ra = pi*random()
+    rb = <span class="hljs-number">2</span>*pi*random()
+    v_a[i] = [vrms*sin(ra)*cos(rb), vrms*sin(ra)*sin(rb), vrms*cos(ra)]
+    atoms.append(atom)
+</code></pre><h4 id="Handling-the-collision"><a class="anchor hidden-xs" href="#Handling-the-collision" title="Handling-the-collision"><span class="octicon octicon-link"></span></a>Handling the collision</h4><pre><code class="python hljs"><span class="hljs-comment"># The function for handling velocity after collisions between two atoms</span>
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">vcollision</span><span class="hljs-params">(a1p, a2p, a1v, a2v)</span>:</span>
+    v1prime = a1v - (a1p - a2p) * sum((a1v-a2v)*(a1p-a2p)) / sum((a1p-a2p)**<span class="hljs-number">2</span>)
+    v2prime = a2v - (a2p - a1p) * sum((a2v-a1v)*(a2p-a1p)) / sum((a2p-a1p)**<span class="hljs-number">2</span>)
+    <span class="hljs-keyword">return</span> v1prime, v2prime
+</code></pre><h4 id="Main-program"><a class="anchor hidden-xs" href="#Main-program" title="Main-program"><span class="octicon octicon-link"></span></a>Main program</h4><p>The instructions about the <code>###</code> part will be moved to the end of this section.</p><pre><code class="python hljs"><span class="hljs-comment"># main program</span>
+<span class="hljs-keyword">while</span> <span class="hljs-keyword">True</span>:
+    t += dt
+    rate(<span class="hljs-number">10000</span>)
+
+    <span class="hljs-comment"># Calculate the new positions of all the atoms and renew them</span>
+    p_a += v_a*dt
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(N):
+        atoms[i].pos = vector(p_a[i, <span class="hljs-number">0</span>], p_a[i, <span class="hljs-number">1</span>], p_a[i, <span class="hljs-number">2</span>])
+    
+    <span class="hljs-comment">## Freeze the histogram for stage != 1</span>
+    <span class="hljs-keyword">if</span> stage != <span class="hljs-number">1</span> :
+        observation.plot(data=np.sqrt(np.sum(np.square(v_a),<span class="hljs-number">-1</span>)))
+
+    <span class="hljs-comment">### Find collisions between pairs of atoms, and handle their collisions</span>
+    r_array = p_a - p_a[:, np.newaxis]
+    rmag = np.sqrt(np.sum(np.square(r_array),<span class="hljs-number">-1</span>))
+    hit = np.less_equal(rmag,<span class="hljs-number">2</span>*size) - np.identity(N)
+    hitlist = np.sort(np.nonzero(hit.flat)[<span class="hljs-number">0</span>]).tolist()
+    <span class="hljs-keyword">for</span> ij <span class="hljs-keyword">in</span> hitlist:
+        i, j = divmod(ij,N)
+        hitlist.remove(j*N+i)
+        <span class="hljs-keyword">if</span> sum((p_a[i]-p_a[j])*(v_a[i]-v_a[j])) &lt; <span class="hljs-number">0</span> :
+            v_a[i], v_a[j] = vcollision(p_a[i], p_a[j], v_a[i], v_a[j])
+
+    <span class="hljs-comment"># Find collisions between the atoms and the walls, and handle their collisions</span>
+    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(N):
+        <span class="hljs-keyword">if</span> abs(p_a[i][<span class="hljs-number">0</span>]) &gt;= L - size <span class="hljs-keyword">and</span> p_a[i][<span class="hljs-number">0</span>]*v_a[i][<span class="hljs-number">0</span>] &gt; <span class="hljs-number">0</span> :
+            v_a[i][<span class="hljs-number">0</span>] = - v_a[i][<span class="hljs-number">0</span>]
+        <span class="hljs-keyword">if</span> abs(p_a[i][<span class="hljs-number">1</span>]) &gt;= L - size <span class="hljs-keyword">and</span> p_a[i][<span class="hljs-number">1</span>]*v_a[i][<span class="hljs-number">1</span>] &gt; <span class="hljs-number">0</span> :
+            v_a[i][<span class="hljs-number">1</span>] = - v_a[i][<span class="hljs-number">1</span>]
+        <span class="hljs-keyword">if</span> abs(p_a[i][<span class="hljs-number">2</span>]) &gt;= L - size <span class="hljs-keyword">and</span> p_a[i][<span class="hljs-number">2</span>]*v_a[i][<span class="hljs-number">2</span>] &gt; <span class="hljs-number">0</span> :
+            v_a[i][<span class="hljs-number">2</span>] = - v_a[i][<span class="hljs-number">2</span>]
+</code></pre><p>When you run this program, you will see a container and within it 200 He atoms running and colliding, with one of them traveling with a trail. In the histogram, you will see the theoretical speed distribution curve (i.e. Maxwell-Boltzmann distribution) whose equation is copied from the textbook. After running the program for some time, you will see that the speed distribution histogram looks just like the theoretical curve. Remember that, the program starts with all the atoms to have the same initial speed. However, only after certain time span and certain number of collisions to allow the atoms to exchange energy, the speed distribution becomes the Maxwell-Boltzmann distribution, without any special treatment.</p><h4 id="The--part"><a class="anchor hidden-xs" href="#The--part" title="The--part"><span class="octicon octicon-link"></span></a>The <code>###</code> part</h4><blockquote>
+<h4 id="助教註2"><a class="anchor hidden-xs" href="#助教註2" title="助教註2"><span class="octicon octicon-link"></span></a>助教註:</h4>
+<p>Must of the contents here are added by myself, and just like Professor said, you could skip this part if you don’t want to understand the code.</p>
+</blockquote><p>It this part, there appear some difficult stuff, like <code>np.newaxis</code>, and some deeper properties of <code>numpy</code>, such as “broadcasting”, so it’s much harder to understand. However, it’s necessary to use these <code>numpy</code> tools, or the program would be extremely slow. I won’t tell you the details of every function we used but will try to tell you what happened.</p><p>The purpose of these codes is to detect the collision between the atoms, then pick up these colliding atoms and deal with their velocities.</p><ol>
+<li>
+<pre><code class="python hljs">r_array = p_a - p_a[:, np.newaxis]
+</code></pre>
+<p><code>np.newaxis</code> is a special object to add a new axis to the array, so the array will become 3D. But don’t be terrified. Because the 2nd dimension of <code>p_a</code> is just the 3 components of the position, we can “hide” this dimension, and <code>p_a - p_a[:, np.newaxis]</code> could be written as</p>
+<img src="https://latex.codecogs.com/gif.latex?\dpi{300}&amp;space;(\vec{x_0},&amp;space;\vec{x_1},&amp;space;...)&amp;space;-&amp;space;\begin{pmatrix}&amp;space;\vec{x_0}\\&amp;space;\vec{x_1}\\&amp;space;...&amp;space;\end{pmatrix}" height="90" class="center">
+<p>(here I use x to represent the position.) Then, because a property of Numpy called “broadcasting”, this subtraction will actually become</p>
+<img src="https://latex.codecogs.com/gif.latex?\dpi{300}&amp;space;\begin{pmatrix}&amp;space;\vec{x_0}&amp;space;&amp;&amp;space;\vec{x_1}&amp;space;&amp;&amp;space;...\\&amp;space;\vec{x_0}&amp;space;&amp;&amp;space;\vec{x_1}&amp;space;&amp;&amp;space;...\\&amp;space;\vec{x_0}&amp;space;&amp;&amp;space;\vec{x_1}&amp;space;&amp;&amp;space;...&amp;space;\end{pmatrix}&amp;space;-&amp;space;\begin{pmatrix}&amp;space;\vec{x_0}&amp;space;&amp;&amp;space;\vec{x_0}&amp;space;&amp;&amp;space;\vec{x_0}\\&amp;space;\vec{x_1}&amp;space;&amp;&amp;space;\vec{x_1}&amp;space;&amp;&amp;space;\vec{x_1}\\&amp;space;...&amp;space;&amp;&amp;space;...&amp;space;&amp;&amp;space;...&amp;space;\end{pmatrix}" height="90">
+<img src="https://latex.codecogs.com/gif.latex?\dpi{300}&amp;space;=&amp;space;\begin{pmatrix}&amp;space;0&amp;space;&amp;&amp;space;\Delta\vec{x}_{10}&amp;space;&amp;&amp;space;\Delta\vec{x}_{20}&amp;space;&amp;&amp;space;...\\&amp;space;\Delta\vec{x}_{01}&amp;space;&amp;&amp;space;0&amp;space;&amp;&amp;space;\Delta\vec{x}_{21}&amp;space;&amp;&amp;space;...\\&amp;space;\Delta\vec{x}_{02}&amp;space;&amp;&amp;space;\Delta\vec{x}_{12}&amp;space;&amp;&amp;space;0&amp;space;&amp;&amp;space;...\\&amp;space;...&amp;space;&amp;&amp;space;...&amp;space;&amp;&amp;space;...&amp;space;&amp;&amp;space;...&amp;space;\end{pmatrix}" height="110">
+<p>So the <code>r_array</code> is just a matrix of displacement vectors. (<span class="mathjax"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="<math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;><mi mathvariant=&quot;normal&quot;>&amp;#x0394;</mi><msub><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mover><mi>x</mi><mo stretchy=&quot;false&quot;>&amp;#x2192;</mo></mover></mrow><mrow class=&quot;MJX-TeXAtom-ORD&quot;><mn>21</mn></mrow></msub></math>" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 2.666em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.154em; height: 0px; font-size: 122%;"><span style="position: absolute; clip: rect(1.283em, 1002.15em, 2.513em, -999.997em); top: -2.2em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Main;">Δ</span><span class="msubsup" id="MathJax-Span-4"><span style="display: inline-block; position: relative; width: 1.335em; height: 0px;"><span style="position: absolute; clip: rect(3.076em, 1000.51em, 4.152em, -999.997em); top: -3.993em; left: 0em;"><span class="texatom" id="MathJax-Span-5"><span class="mrow" id="MathJax-Span-6"><span class="munderover" id="MathJax-Span-7"><span style="display: inline-block; position: relative; width: 0.566em; height: 0px;"><span style="position: absolute; clip: rect(3.384em, 1000.51em, 4.152em, -999.997em); top: -3.993em; left: 0em;"><span class="mi" id="MathJax-Span-8" style="font-family: MathJax_Math-italic;">x</span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span><span style="position: absolute; top: -4.045em; left: 0.105em;"><span style="height: 0em; vertical-align: 0em; width: 0.464em; display: inline-block; overflow: hidden;"></span><span class="mo" id="MathJax-Span-9" style="font-family: MathJax_Main;">⃗&nbsp;<span style="height: 0em; vertical-align: 0em; margin-left: -0.254em;"></span></span><span style="display: inline-block; overflow: hidden; height: 1px; width: 0em;"></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span><span style="position: absolute; top: -3.84em; left: 0.566em;"><span class="texatom" id="MathJax-Span-10"><span class="mrow" id="MathJax-Span-11"><span class="mn" id="MathJax-Span-12" style="font-size: 70.7%; font-family: MathJax_Main;">21</span></span></span><span style="display: inline-block; width: 0px; height: 3.998em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.205em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.247em; border-left: 0px solid; width: 0px; height: 1.253em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi mathvariant="normal">Δ</mi><msub><mrow class="MJX-TeXAtom-ORD"><mover><mi>x</mi><mo stretchy="false">→</mo></mover></mrow><mrow class="MJX-TeXAtom-ORD"><mn>21</mn></mrow></msub></math></span></span><script type="math/tex" id="MathJax-Element-1">\Delta\vec{x}_{21}</script></span> stands for the displacement vector pointing from the 1st atom to the 2nd atom)</p>
+</li>
+<li>
+<pre><code class="python hljs">rmag = np.sqrt(np.sum(np.square(r_array),<span class="hljs-number">-1</span>))
+</code></pre>
+<p>Although we write the <code>r_array</code> like 2D, don’t forget it’s actually 3D. Here <code>np.square</code> squares each components of the displacement vectors. Then <code>np.sum</code> sums up the three components, because the parameter <code>-1</code> indicates that the axis to be summed up is the last axis. Finally, after <code>np.sqrt</code> takes the square root, we get <code>rmag</code>. It’s just like replacing the displacement vectors in <code>r_array</code> with distances (scalar), so we get a 2D array again.</p>
+</li>
+<li>
+<pre><code class="python hljs">hit = np.less_equal(rmag, <span class="hljs-number">2</span>*size) - np.identity(N)
+</code></pre>
+<p>This line is easier. <code>np.less_equal(rmag, 2*size)</code> examines whether the elements of <code>rmag</code> are less than or equal to <code>2*size</code> and return <code>True</code> or <code>False</code> (It’s element-wise, so the return value is an array with the same shape as <code>rmag</code>).</p>
+<p>Then we subtract <code>np.identity(N)</code> from the array to eliminate the diagonal elements. (The distance between an atom and itself, which is zero, will definitely less than <code>2*size</code>, but it’s not what we are finding.)</p>
+<p>So if only the 0th and the 1st atoms are colliding, <code>hit</code> will look like this:</p>
+<img src="https://latex.codecogs.com/gif.latex?\dpi{300}&amp;space;\begin{pmatrix}&amp;space;0&amp;space;&amp;&amp;space;1&amp;space;&amp;&amp;space;0&amp;space;&amp;&amp;space;...\\&amp;space;1&amp;space;&amp;&amp;space;0&amp;space;&amp;&amp;space;0&amp;space;&amp;&amp;space;...\\&amp;space;0&amp;space;&amp;&amp;space;0&amp;space;&amp;&amp;space;0&amp;space;&amp;&amp;space;...\\&amp;space;...&amp;space;&amp;&amp;space;...&amp;space;&amp;&amp;space;...&amp;space;&amp;&amp;space;...&amp;space;\end{pmatrix}" height="110" class="center">
+</li>
+<li>
+<pre><code class="python hljs">hitlist = np.sort(np.nonzero(hit.flat)[<span class="hljs-number">0</span>]).tolist()
+<span class="hljs-keyword">for</span> ij <span class="hljs-keyword">in</span> hitlist:
+    i, j = divmod(ij,N)
+    hitlist.remove(j*N+i)
+    <span class="hljs-keyword">if</span> sum((p_a[i]-p_a[j])*(v_a[i]-v_a[j])) &lt; <span class="hljs-number">0</span> :
+        v_a[i], v_a[j] = vcollision(p_a[i], p_a[j], v_a[i], v_a[j])
+</code></pre>
+<p>First, <code>hit.flat</code> flattens the <code>hit</code> to 1D. In our case that only the 0th and 1st atoms are colliding, only the 1st and the N-th value in this 1D array are not zero. Then <code>np.nonzero</code> will find out the indices with non-zero value and return the indices in the form of <code>(np.array, )</code>, which is a tuple. So we use <code>[0]</code> to extract the indices array, sort it, and turn it into a list. (I think it’s because Professor wants to use the <code>list.remove</code> method.)</p>
+<p>Then, the for loop iterates the indices. Because the flattened indices <code>ij</code> are actually <code>i*N + j</code>, if <code>i</code> is the row index and <code>j</code> is the column index, so we can extract the <code>i</code> and <code>j</code> by <code>divmod(ij, N)</code>. And because the <code>hit[j, i]</code> represents the same pair of atoms, so we remove this element by <code>hitlist.remove(j*N+i)</code>.</p>
+<p>Finally, we examine the direction of velocities, just as we did in the previous homework, and then use <code>vcollision</code> to perform the collision.</p>
+</li>
+</ol><blockquote>
+<p>For the usage of <code>np.newaxis</code>, you can take a look at this page (in Mandarin):<br>
+<a href="http://ben-do.github.io/2016/09/15/change-shape-of-matrix-by-numpy/" target="_blank" rel="noopener">http://ben-do.github.io/2016/09/15/change-shape-of-matrix-by-numpy/</a></p>
+</blockquote><h2 id="IV-Homework"><a class="anchor hidden-xs" href="#IV-Homework" title="IV-Homework"><span class="octicon octicon-link"></span></a>IV. Homework</h2><p>Now you need to complete the simulation for the adiabatic compression and free expansion with the above template file. Read carefully the template program (It’s OK to skip <code>###</code> part). You need to understand the logic behind the program in order to complete this simulation. In this program, you also need to implement a section of code for an interrupt callback function with <code>'n'</code> key to advance in stages if you are using keyboard control, or with a button <code>'n'</code> to advance in stages if you are using button control.</p><h3 id="In-each-stage-do-the-following"><a class="anchor hidden-xs" href="#In-each-stage-do-the-following" title="In-each-stage-do-the-following"><span class="octicon octicon-link"></span></a>In each stage, do the following:</h3><p>For every <code>1000*dt</code>, in addition to the main animation that shows the gas of atoms in the container and the graph that shows the histogram of the speed distribution, print the following:</p><ol>
+<li>
+<p><strong>T (temperature)</strong>:<br>
+calculated by <code>T = Total Translational Kinetic Energy / (3*N*k/2)</code>, <code>N</code> is the number of molecules and <code>k</code> the Boltzmann constant</p>
+</li>
+<li>
+<p><strong>p (pressure)</strong>:<br>
+calculated by the total momentum impacted on the 6 walls within the <code>1000*dt</code> time span, divided by <code>1000*dt</code>, divided by total wall area, which is just <code>total impulse(衝量) / (1000*dt) / total area</code>.</p>
+<p>Note: <img src="https://latex.codecogs.com/gif.latex?\dpi{300}&amp;space;p&amp;space;=&amp;space;\frac{force}{area}&amp;space;=&amp;space;\frac{\Delta&amp;space;p}{\Delta&amp;space;t&amp;space;\cdot&amp;space;area}" height="40"></p>
+</li>
+<li>
+<p><strong>V (volume)</strong>:<br>
+<code>length * height * width</code> of the container at any moment</p>
+</li>
+<li>
+<p><strong>p * V</strong></p>
+</li>
+<li>
+<p><strong>N * k * T</strong>: you will see at any moment <code>p*V</code> is close to <code>N*k*T</code>.</p>
+</li>
+<li>
+<p><strong>p * (V**gamma)</strong>:<br>
+the product of pressure and the volume to the power of gamma. Since the motion is three-dimensional, therefore the degree of freedom is 3 (without rotation and vibration for monatomic molecule). The ratio of the constant-pressure heat capacity to the constant-volume heat capacity is <code>gamma = (1+3/2) / (3/2) = 5/3</code>.</p>
+</li>
+</ol><h3 id="In-Stage-0-initial-stage"><a class="anchor hidden-xs" href="#In-Stage-0-initial-stage" title="In-Stage-0-initial-stage"><span class="octicon octicon-link"></span></a>In Stage 0 (initial stage):</h3><p>You wait the system to reach the equilibrium, which is indicated by the speed distribution histogram very close to the theoretical curve. Then you hit the <code>‘n’</code>, freeze the current histogram plot (this is already done by ##) and go to Stage 1.</p><img src="pic/VP9/stage_0.png" height="180"><h3 id="In-Stage-1-adiabatic-compression"><a class="anchor hidden-xs" href="#In-Stage-1-adiabatic-compression" title="In-Stage-1-adiabatic-compression"><span class="octicon octicon-link"></span></a>In Stage 1 (adiabatic compression):</h3><p>Make the left and right walls (in x-axis) move towards the center with a speed <code>v_W = L / (20000.0*dt)</code>. This has two effects:</p><ol>
+<li>
+<p>the available space for the atoms to move is smaller.</p>
+</li>
+<li>
+<p>since the walls have mass much larger than that of the atoms, therefore when the atoms hit elastically on the moving walls, they are bounced back with a velocity that the walls’ velocity needs to be considered (<strong>you need to implement this in the program</strong>).</p>
+</li>
+</ol><p>Until the total length of the container becomes 1/2 of that of the original container or until you hit <code>‘n’</code> again (depending on which comes first), stop the walls from moving and go to Stage 2.</p><img src="pic/VP9/stage_1.png" height="180"><h3 id="In-Stage-2"><a class="anchor hidden-xs" href="#In-Stage-2" title="In-Stage-2"><span class="octicon octicon-link"></span></a>In Stage 2:</h3><p>Start a new histogram for the speed of the atoms and add a new theoretical curve according to the current temperature. Wait until the histogram reaches the new equilibrium (i.e. the histogram is very close the theoretical value), hit the <code>‘n’</code> and go to Stage 3.</p><img src="pic/VP9/stage_2.png" height="180"><h3 id="In-Stage-3-free-expansion"><a class="anchor hidden-xs" href="#In-Stage-3-free-expansion" title="In-Stage-3-free-expansion"><span class="octicon octicon-link"></span></a>In Stage 3 (free expansion):</h3><p>The walls suddenly go to their original positions as in Stage 0, mimicking a free expansion, in which the gas expands in an infinitesimal time without any resistance.</p><img src="pic/VP9/stage_3.png" height="180"><p>Run your program, observe carefully about the physics and find what happens to <code>T</code>, <code>p</code>, <code>V</code>, <code>p * V</code>, <code>N * k * T</code> and <code>p * (V**gamma)</code>. Are these value matching to the theoretically prediction by your text book? Are the speed distribution matching the Maxwell-Boltzmann Distribution for the same temperature? Think about the physics why you get these results. Do Notice that, in this simulation, nothing but exchange of energy of elastic collision causes these results.</p><h2 id="V-Grading-Policy"><a class="anchor hidden-xs" href="#V-Grading-Policy" title="V-Grading-Policy"><span class="octicon octicon-link"></span></a>V. Grading Policy</h2><h3 id="Must"><a class="anchor hidden-xs" href="#Must" title="Must"><span class="octicon octicon-link"></span></a>Must</h3><p>Here I list 6 targets. Your grade will be determined by how many targets you achieved, as I show in the table below.</p><table>
+<thead>
+<tr>
+<th style="text-align:center">Your grade</th>
+<th style="text-align:center">N (# of targets)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">20%</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">40%</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">60%</td>
+<td style="text-align:center">3 or 4</td>
+</tr>
+<tr>
+<td style="text-align:center">80%</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">100%</td>
+<td style="text-align:center">6</td>
+</tr>
+</tbody>
+</table><ul>
+<li>N: the number of the targets achieved by you</li>
+</ul><h4 id="Targets"><a class="anchor hidden-xs" href="#Targets" title="Targets"><span class="octicon octicon-link"></span></a>Targets</h4><ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>The equation <code>pV = NkT</code> almost holds at every moment.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>The wall did compress the volume in stage 1.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>The temperature <code>T</code> increases in stage 1.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label><code>p * (V**gamma)</code> matches the theoretical prediction in stage 1.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>The distribution in stage 2 fits the theoretical curve.</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled"><label></label>The temperature <code>T</code> in stage 3 matches the theoretical prediction.</li>
+</ul></div>
+    <div class="ui-toc dropup unselectable hidden-print" style="display:none;">
+        <div class="pull-right dropdown">
+            <a id="tocLabel" class="ui-toc-label btn btn-default" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Table of content">
+                <i class="fa fa-bars"></i>
+            </a>
+            <ul id="ui-toc" class="ui-toc-dropdown dropdown-menu" aria-labelledby="tocLabel">
+                <div class="toc"><ul class="nav">
+<li class=""><a href="#VP9-Spring-Ball-Wave-and-Dispersion-of-1D-phonon-numpy-array" title="VP9: Spring-Ball Wave and Dispersion of 1D phonon [numpy array]">VP9: Spring-Ball Wave and Dispersion of 1D phonon [numpy array]</a><ul class="nav">
+<li><a href="#影片以及官方PDF" title="影片以及官方PDF">影片以及官方PDF</a><ul class="nav">
+<li><a href="#同學們的影片" title="同學們的影片">同學們的影片</a></li>
+</ul>
+</li>
+<li><a href="#作業繳交格式" title="作業繳交格式">作業繳交格式</a><ul class="nav">
+<li><a href="#繳交期限" title="繳交期限">繳交期限</a></li>
+</ul>
+</li>
+<li><a href="#I-Callback-and-Keyboard-Control" title="I. Callback and Keyboard Control">I. Callback and Keyboard Control</a><ul class="nav">
+<li><a href="#Code-for-ones-not-using-Jupyter" title="Code for ones not using Jupyter">Code for ones not using Jupyter</a></li>
+<li><a href="#Code-for-Jupyter-also-available-for-other-environments" title="Code for Jupyter (also available for other environments)">Code for Jupyter (also available for other environments)</a></li>
+</ul>
+</li>
+<li><a href="#II-Histogram-Module" title="II. Histogram Module">II. Histogram Module</a><ul class="nav">
+<li><a href="#Do-save-these-codes-as-histogrampy-in-your-homework-folder" title="Do save these codes as histogram.py in your homework folder">Do save these codes as histogram.py in your homework folder</a></li>
+</ul>
+</li>
+<li><a href="#III-Template-File-for-Gas-in-a-Container" title="III. Template File for Gas in a Container">III. Template File for Gas in a Container</a><ul class="nav">
+<li><a href="#Do-save-these-codes-as-VP9py-in-your-homework-folder" title="Do save these codes as VP9.py in your homework folder">Do save these codes as VP9.py in your homework folder</a></li>
+<li><a href="#Code" title="Code">Code</a></li>
+</ul>
+</li>
+<li><a href="#IV-Homework" title="IV. Homework">IV. Homework</a><ul class="nav">
+<li><a href="#In-each-stage-do-the-following" title="In each stage, do the following:">In each stage, do the following:</a></li>
+<li><a href="#In-Stage-0-initial-stage" title="In Stage 0 (initial stage):">In Stage 0 (initial stage):</a></li>
+<li><a href="#In-Stage-1-adiabatic-compression" title="In Stage 1 (adiabatic compression):">In Stage 1 (adiabatic compression):</a></li>
+<li><a href="#In-Stage-2" title="In Stage 2:">In Stage 2:</a></li>
+<li><a href="#In-Stage-3-free-expansion" title="In Stage 3 (free expansion):">In Stage 3 (free expansion):</a></li>
+</ul>
+</li>
+<li><a href="#V-Grading-Policy" title="V. Grading Policy">V. Grading Policy</a><ul class="nav">
+<li><a href="#Must" title="Must">Must</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+            </ul>
+        </div>
+    </div>
+    <div id="ui-toc-affix" class="ui-affix-toc ui-toc-dropdown unselectable hidden-print" data-spy="affix" style="top:17px;display:none;" null null>
+        <div class="toc"><ul class="nav">
+<li class=""><a href="#VP9-Spring-Ball-Wave-and-Dispersion-of-1D-phonon-numpy-array" title="VP9: Spring-Ball Wave and Dispersion of 1D phonon [numpy array]">VP9: Spring-Ball Wave and Dispersion of 1D phonon [numpy array]</a><ul class="nav">
+<li><a href="#影片以及官方PDF" title="影片以及官方PDF">影片以及官方PDF</a><ul class="nav">
+<li><a href="#同學們的影片" title="同學們的影片">同學們的影片</a></li>
+</ul>
+</li>
+<li><a href="#作業繳交格式" title="作業繳交格式">作業繳交格式</a><ul class="nav">
+<li><a href="#繳交期限" title="繳交期限">繳交期限</a></li>
+</ul>
+</li>
+<li><a href="#I-Callback-and-Keyboard-Control" title="I. Callback and Keyboard Control">I. Callback and Keyboard Control</a><ul class="nav">
+<li><a href="#Code-for-ones-not-using-Jupyter" title="Code for ones not using Jupyter">Code for ones not using Jupyter</a></li>
+<li><a href="#Code-for-Jupyter-also-available-for-other-environments" title="Code for Jupyter (also available for other environments)">Code for Jupyter (also available for other environments)</a></li>
+</ul>
+</li>
+<li><a href="#II-Histogram-Module" title="II. Histogram Module">II. Histogram Module</a><ul class="nav">
+<li><a href="#Do-save-these-codes-as-histogrampy-in-your-homework-folder" title="Do save these codes as histogram.py in your homework folder">Do save these codes as histogram.py in your homework folder</a></li>
+</ul>
+</li>
+<li><a href="#III-Template-File-for-Gas-in-a-Container" title="III. Template File for Gas in a Container">III. Template File for Gas in a Container</a><ul class="nav">
+<li><a href="#Do-save-these-codes-as-VP9py-in-your-homework-folder" title="Do save these codes as VP9.py in your homework folder">Do save these codes as VP9.py in your homework folder</a></li>
+<li><a href="#Code" title="Code">Code</a></li>
+</ul>
+</li>
+<li><a href="#IV-Homework" title="IV. Homework">IV. Homework</a><ul class="nav">
+<li><a href="#In-each-stage-do-the-following" title="In each stage, do the following:">In each stage, do the following:</a></li>
+<li><a href="#In-Stage-0-initial-stage" title="In Stage 0 (initial stage):">In Stage 0 (initial stage):</a></li>
+<li><a href="#In-Stage-1-adiabatic-compression" title="In Stage 1 (adiabatic compression):">In Stage 1 (adiabatic compression):</a></li>
+<li><a href="#In-Stage-2" title="In Stage 2:">In Stage 2:</a></li>
+<li><a href="#In-Stage-3-free-expansion" title="In Stage 3 (free expansion):">In Stage 3 (free expansion):</a></li>
+</ul>
+</li>
+<li><a href="#V-Grading-Policy" title="V. Grading Policy">V. Grading Policy</a><ul class="nav">
+<li><a href="#Must" title="Must">Must</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div><div class="toc-menu"><a class="expand-toggle" href="#">全部展開</a><a class="back-to-top" href="#">回到頂部</a><a class="go-to-bottom" href="#">移至底部</a></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gist-embed/2.6.0/gist-embed.min.js" integrity="sha256-KyF2D6xPIJUW5sUDSs93vWyZm+1RzIpKCexxElmxl8g=" crossorigin="anonymous" defer></script>
+    <script>
+        var markdown = $(".markdown-body");
+        //smooth all hash trigger scrolling
+        function smoothHashScroll() {
+            var hashElements = $("a[href^='#']").toArray();
+            for (var i = 0; i < hashElements.length; i++) {
+                var element = hashElements[i];
+                var $element = $(element);
+                var hash = element.hash;
+                if (hash) {
+                    $element.on('click', function (e) {
+                        // store hash
+                        var hash = this.hash;
+                        if ($(hash).length <= 0) return;
+                        // prevent default anchor click behavior
+                        e.preventDefault();
+                        // animate
+                        $('body, html').stop(true, true).animate({
+                            scrollTop: $(hash).offset().top
+                        }, 100, "linear", function () {
+                            // when done, add hash to url
+                            // (default click behaviour)
+                            window.location.hash = hash;
+                        });
+                    });
+                }
+            }
+        }
+
+        smoothHashScroll();
+        var toc = $('.ui-toc');
+        var tocAffix = $('.ui-affix-toc');
+        var tocDropdown = $('.ui-toc-dropdown');
+        //toc
+        tocDropdown.click(function (e) {
+            e.stopPropagation();
+        });
+
+        var enoughForAffixToc = true;
+
+        function generateScrollspy() {
+            $(document.body).scrollspy({
+                target: ''
+            });
+            $(document.body).scrollspy('refresh');
+            if (enoughForAffixToc) {
+                toc.hide();
+                tocAffix.show();
+            } else {
+                tocAffix.hide();
+                toc.show();
+            }
+            $(document.body).scroll();
+        }
+
+        function windowResize() {
+            //toc right
+            var paddingRight = parseFloat(markdown.css('padding-right'));
+            var right = ($(window).width() - (markdown.offset().left + markdown.outerWidth() - paddingRight));
+            toc.css('right', right + 'px');
+            //affix toc left
+            var newbool;
+            var rightMargin = (markdown.parent().outerWidth() - markdown.outerWidth()) / 2;
+            //for ipad or wider device
+            if (rightMargin >= 133) {
+                newbool = true;
+                var affixLeftMargin = (tocAffix.outerWidth() - tocAffix.width()) / 2;
+                var left = markdown.offset().left + markdown.outerWidth() - affixLeftMargin;
+                tocAffix.css('left', left + 'px');
+            } else {
+                newbool = false;
+            }
+            if (newbool != enoughForAffixToc) {
+                enoughForAffixToc = newbool;
+                generateScrollspy();
+            }
+        }
+        $(window).resize(function () {
+            windowResize();
+        });
+        $(document).ready(function () {
+            windowResize();
+            generateScrollspy();
+        });
+
+        //remove hash
+        function removeHash() {
+            window.location.hash = '';
+        }
+
+        var backtotop = $('.back-to-top');
+        var gotobottom = $('.go-to-bottom');
+
+        backtotop.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToTop)
+                scrollToTop();
+            removeHash();
+        });
+        gotobottom.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            if (scrollToBottom)
+                scrollToBottom();
+            removeHash();
+        });
+
+        var toggle = $('.expand-toggle');
+        var tocExpand = false;
+
+        checkExpandToggle();
+        toggle.click(function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            tocExpand = !tocExpand;
+            checkExpandToggle();
+        })
+
+        function checkExpandToggle () {
+            var toc = $('.ui-toc-dropdown .toc');
+            var toggle = $('.expand-toggle');
+            if (!tocExpand) {
+                toc.removeClass('expand');
+                toggle.text('Expand all');
+            } else {
+                toc.addClass('expand');
+                toggle.text('Collapse all');
+            }
+        }
+
+        function scrollToTop() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: 0
+            }, 100, "linear");
+        }
+
+        function scrollToBottom() {
+            $('body, html').stop(true, true).animate({
+                scrollTop: $(document.body)[0].scrollHeight
+            }, 100, "linear");
+        }
+    </script>
+</body>
+
+</html>
